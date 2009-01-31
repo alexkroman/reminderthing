@@ -1,7 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + "/deploy_local")
+require 'mongrel_cluster/recipes'
 
 set :application, "texttosms"
-set :repository,  "/var/git/remindme.git"
+set :repository,  "ssh://alex/var/git/reminder.git"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
@@ -12,19 +13,21 @@ set :deploy_to, "/var/www/#{application}"
 # your SCM below:
 set :scm, :git
 set :branch, "master"
-set :deploy_via, :checkout
-set :git_shallow_clone, 1
+set :deploy_via, :remote_cache
+#set :git_shallow_clone, 1
 default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+set :scm_verbose, true
 
 role :app, "alex"
 role :web, "alex"
 role :db,  "alex", :primary => true
 
 after "deploy:update_code", "db:symlink"
-after "deploy:setup", :permissions, :db
+after "deploy:setup", "permissions", "db"
 
 task :permissions do
-  sudo "chown alex:mongrel #{deploy_to}"
+  sudo "chown -R alex:mongrel #{deploy_to}"
   sudo "touch #{shared_path}/log/production.log"
   sudo "chown -R alex:mongrel #{shared_path}/log"
   sudo "chmod -R 2770 #{shared_path}/log"

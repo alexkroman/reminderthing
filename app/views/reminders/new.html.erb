@@ -58,13 +58,13 @@
       </div>
     <% end %>
     <% if @reminders.blank? %>
-      <div style="font-size:140%">You don't have any scheduled messages right now</div>
+      <div style="font-size:140%">You don't have any scheduled reminders right now</div>
       <br />
     <% end %>
     <% @reminders.each do |email, days| %>
       <% count = 0 %>
       <% days.each{|x,y| count += y.size} %>
-    <div style="font-size:140%"><b><%=h count %></b> upcoming message<% unless count == 1 %>s<% end %> for <%=h format_delivery(email) %></div>
+    <div style="font-size:140%"><b><%=h count %></b> scheduled reminder<% unless count == 1 %>s<% end %> for <%=h format_delivery(email) %></div>
       <br />
       <% days.each do |day, reminders| %>
         <b style="font-size:120%;"><%=h day %></b>
@@ -76,7 +76,7 @@
       <% end %>
     <% end %>
     <% unless logged_in? %>
-      <div style="background-color:#eee;padding:5px;margin-bottom:5px;"><%= link_to '<b>Create an account</b>', signup_path %> and access your scheduled messages from any computer</div>
+      <div style="background-color:#eee;padding:5px;margin-bottom:5px;"><%= link_to '<b>Create an account</b>', signup_path %> and access your scheduled reminders from any computer</div>
     <% end %>
   </div>
 </div>

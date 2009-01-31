@@ -1,0 +1,10 @@
+login: &login
+  adapter: postgresql
+  host:
+  username:
+  password:
+  encoding: utf8
+
+production:
+ 	  database:
+ 	  <<: *login

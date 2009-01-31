@@ -1,0 +1,68 @@
+#timeDiv { 
+  margin-top: -6px;
+  width: 130px;
+  margin-left:92px;
+  padding: 0.5em;
+  display: none;
+}
+#timeDiv a {
+  color: #0066CC;
+}
+#timeDiv table {
+  width: 10em;
+}
+#timeDiv th {
+  text-align:center;
+  font-weight: bold;
+  width: 5em;
+  background: #eee;
+}
+#timeDiv td {
+  width: 5em;
+  height: 1.5em;
+  font-size: 12px;
+  background; #fff;
+  text-align: right;
+  padding: 0.25em 0.75em 0.25em 0.25em;
+}
+#timeDiv td:hover {
+  background: #0066CC;
+}
+#timeDiv td:hover a {
+  color: #fff;
+}
+#timeDiv .am {
+  border-right: 1px solid #cccccc;
+}
+.field_with_errors input {
+  border:3px solid pink;
+}
+.errorExplanation {
+  background-color: pink;
+  border: 1px solid maroon;
+  padding: 4px;
+  margin-bottom: 15px;
+  width: 300px;
+} 
+.errorExplanation p {
+  font-weight: bold;
+}
+.grey {
+  background-color: #eee;
+}
+#sms-form label {
+  font-size: 140%;
+}
+#sms-form {
+  border-right: 4px solid #eee;
+}
+a {
+  color: #0066CC;
+}
+
+#notice {
+  background-color: #FFFF99;
+  padding: 10px;
+  border: 1px solid gray;
+  margin-bottom: 10px;
+}

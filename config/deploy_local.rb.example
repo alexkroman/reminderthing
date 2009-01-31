@@ -1,0 +1,7 @@
+Capistrano::Configuration.instance(:must_exist).load do
+ 	  set :db_adapter, 'mysql'
+ 	  set :db_user, 'alex'
+ 	  set :db_password, 'deploy-20080915c'
+ 	  set :db_host, 'localhost'
+ 	  set :db_name, 'dbname'
+end

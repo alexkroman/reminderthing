@@ -1,0 +1,62 @@
+body {
+  font-family : Tahoma,Verdana,Helvetica,Arial,sans-serif;
+}
+
+a.time_trigger {
+    color : #06c;
+    height : 17px;
+    cursor : pointer;
+}
+
+button.time_picker_button {
+    background : transparent url( ../res/date_picker.gif ) no-repeat top right;
+    border : 0;
+    margin : 0 0 0 6px;
+    vertical-align : top;
+    width : 17px;
+    height : 17px;
+    cursor : pointer;
+}
+
+.time_display {
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  width: 95px;
+  padding: 0.5em;
+  border: 1px solid gray;
+}
+
+.time_display table {
+  background-color: #fff;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border-colapse: 0;
+}
+
+.time_display a {
+  color: #0066CC;
+}
+
+.time_display th {
+  color: #666;
+  background-color: #ccc;
+  font-weight: bold;
+  font-size: .8em;
+}
+
+.time_display td {
+  background-color: #eee;
+  padding: 3px;
+  font-size: .7em;
+}
+
+.am {
+  padding-left: 4px;
+  border-right: 1px solid #ccc;
+}
+
+.pm {
+  padding-left: 4px;
+}

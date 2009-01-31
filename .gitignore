@@ -1,0 +1,6 @@
+config/database.yml
+config/deploy_local.rb
+log/*.log
+log/test.log
+tmp/*
+db/schema.rb

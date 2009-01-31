@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>texttosms - free text message and sms messages</title>
+    <style type="text/css">
+    /*margin and padding on body element
+      can introduce errors in determining
+      element position and are not recommended;
+      we turn them off as a foundation for YUI
+      CSS treatments. */
+    body {
+      margin:0;
+      padding:0;
+    }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/reset/reset.css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/fonts/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/grids/grids.css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/base/base.css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/calendar/assets/skins/sam/calendar.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/calendar/calendar-min.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/datasource/datasource-min.js"></script> 
+    <script type="text/javascript" src="/javascripts/application.js"></script>
+</head>
+
+<body id="doc2" class="yui-skin-sam">
+  <div class="hd yui-g" style="padding: 5px; margin-bottom: 20px; border-bottom: 2px solid #777;background-color: #DDF5F5;" >
+    <div class="yui-u first">
+      <span style="font-size: 200%;"><b>Text</b>To<b>SMS</b></span>
+      send reminders to any phone in the u.s. (email too!)
+    </div>
+      <div  style="float:right;margin-right:15px;">
+        <% unless logged_in? %>
+          <%= link_to 'Login', login_path %> or <%= link_to '<b>Create an account</b>', signup_path %>
+        <% else %>
+          <%= link_to 'Sign Out', logout_path  %>
+
+        <% end %>
+      </div>
+  </div>
+
+  <div class="bd">
+    <%= yield %>
+  </div>
+</body>
+</html>

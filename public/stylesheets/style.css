@@ -1,5 +1,5 @@
 #timeDiv { 
-  margin-top: -6px;
+  margin-top: -5px;
   width: 130px;
   margin-left:92px;
   padding: 0.5em;
@@ -54,8 +54,8 @@
   font-size: 140%;
 }
 #sms-form {
-  border-right: 4px solid #eee;
-  width: 85%;
+  border: 4px solid #eee;
+  padding: 15px;
 }
 a {
   color: #0066CC;
@@ -70,11 +70,10 @@ a {
 .hd {
   padding: 5px; 
   margin-bottom: 20px; 
-  border-bottom: 2px solid #777;
   background-color: #DDF5F5;
 }
 .title {
-  font-size:200%;
+  font-size:240%;
 }
 #login {
   float:right;
@@ -91,9 +90,22 @@ a {
 }
 #reminder-count {
   font-size: 120%;  
+  border-bottom: 1px solid #eee;
 }
 #signup-box {
-  background-color:#eee;
+  background-color: #eee;
   padding:5px;
   margin-bottom:5px;
+}
+.day {
+  font-size: 120%;
+  background-color: #eee;
+}
+a.remove {
+  font-size: 80%;
+}
+#reminders li {
+  font-size: 90%;
+  list-style: none;
+  margin-left: -22px;
 }

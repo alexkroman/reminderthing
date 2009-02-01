@@ -15,14 +15,14 @@
     <script type="text/javascript" src="/javascripts/application.js"></script>
   </head>
   <body id="doc2" class="yui-skin-sam">
-    <div class="hd yui-g">
+    <div class="hd yui-gc">
       <div class="yui-u first">
         <span class="title">text<b>remind</b>me</span>
         schedule simple reminders for any phone or email
       </div>
       <div id="login">
         <% unless logged_in? %>
-        <%= link_to 'Login', login_path %> or <%= link_to '<b>Create an account</b>', signup_path %>
+        <%= link_to 'Login', login_path %> or <%= link_to '<b>Sign up</b>', signup_path %>
         <% else %>
         <%= link_to 'Sign Out', logout_path  %>
         <% end %>

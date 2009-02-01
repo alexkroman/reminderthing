@@ -52,12 +52,7 @@
       <% end %>
     </div>
   </div>
-  <div class="yui-u">
-    <% if flash[:notice] %>
-      <div id="notice">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+  <div id="reminders" class="yui-u">
     <% if @reminders.blank? %>
       <div id="reminder-count">You don't have any scheduled reminders right now</div>
       <br />
@@ -65,19 +60,19 @@
     <% @reminders.each do |email, days| %>
       <% count = 0 %>
       <% days.each{|x,y| count += y.size} %>
-      <div id="reminder-count"><b><%=h count %></b> scheduled reminder<% unless count == 1 %>s<% end %> for <%=h format_delivery(email) %></div>
+      <div id="reminder-count"><b><%=h format_delivery(email) %></b> has <%=h count %> scheduled reminder<% unless count == 1 %>s<% end %></div>
       <br />
       <% days.each do |day, reminders| %>
-        <b style="font-size:120%;"><%=h day %></b>
+        <span class="day"><%=h day %></span>
         <ul>
           <% reminders.each do |reminder| %>
-            <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> <em>at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :method => :delete, :style => 'color: red;' %></li>
+          <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> <em>at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></li>
           <% end %>
         </ul>
       <% end %>
     <% end %>
     <% unless logged_in? %>
-      <div id="signup-box"><%= link_to '<b>Create an account</b>', signup_path %> and access your scheduled reminders from any computer</div>
+      <div id="signup-box"><%= link_to '<b>Sign up</b>', signup_path %> and access your scheduled reminders from any computer</div>
     <% end %>
   </div>
 </div>

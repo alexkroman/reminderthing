@@ -18,7 +18,7 @@ class Reminder < ActiveRecord::Base
   end
   
   def send_at_date_display
-    send_at.strftime('%b %d, %Y') 
+    send_at.strftime('%a, %b %d') 
   end
 
   def sent!

@@ -21,6 +21,8 @@ end
       'alltell'
     when /ameritech/
       'ameritech'
+    when /bell/
+      'at&t'
     when /at&t/
       'at&t'
     when /cingular/

@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ReminderTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context "A reminder" do
+
+    setup do
+      @reminder = Factory.new_reminder(:carrier => 'verizon')
+    end
+
   end
 end

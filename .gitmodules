@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/model_factory"]
 	path = vendor/plugins/model_factory
 	url = git://github.com/zenhob/model_factory.git
+[submodule "vendor/plugins/mocha"]
+	path = vendor/plugins/mocha
+	url = git://github.com/floehopper/mocha.git

@@ -19,6 +19,8 @@ end
       'verizon'
     when /alltell/
       'alltell'
+    when /alltel/
+      'alltell'
     when /ameritech/
       'ameritech'
     when /bell/

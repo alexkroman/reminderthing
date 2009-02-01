@@ -14,7 +14,7 @@ set :deploy_to, "/var/www/#{application}"
 set :scm, :git
 set :branch, "master"
 set :deploy_via, :remote_cache
-#set :git_shallow_clone, 1
+set :git_enable_submodules, 1
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 set :scm_verbose, true

@@ -1,10 +1,14 @@
 login: &login
-  adapter: postgresql
+  adapter: mysql
   host:
-  username:
+  username: root
   password:
   encoding: utf8
 
-production:
- 	  database:
+development:
+ 	  database: remindme_development
+ 	  <<: *login
+    
+test:
+ 	  database: remindme_development
  	  <<: *login

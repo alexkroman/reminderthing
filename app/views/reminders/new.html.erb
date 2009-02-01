@@ -54,7 +54,7 @@
   </div>
   <div id="reminders" class="yui-u">
     <% if @reminders.blank? %>
-      <div id="reminder-count">Once you schedule a reminder it will show up here.</div>
+    <div id="reminder-count">You have <b>0</b> reminders waiting to go out.</div>
       <br />
     <% end %>
     <% @reminders.each do |email, days| %>

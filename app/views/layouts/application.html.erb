@@ -22,7 +22,7 @@
       </div>
       <div id="login">
         <% unless logged_in? %>
-        <%= link_to 'Login', login_path %> or <%= link_to '<b>Sign up</b>', signup_path %>
+        <%= link_to 'Sign In', login_path %> or <%= link_to '<b>Sign up</b>', signup_path %>
         <% else %>
         <%= link_to 'Sign Out', logout_path  %>
         <% end %>

@@ -55,6 +55,7 @@
 }
 #sms-form {
   border-right: 4px solid #eee;
+  width: 85%;
 }
 a {
   color: #0066CC;
@@ -65,4 +66,34 @@ a {
   padding: 10px;
   border: 1px solid gray;
   margin-bottom: 10px;
+}
+.hd {
+  padding: 5px; 
+  margin-bottom: 20px; 
+  border-bottom: 2px solid #777;
+  background-color: #DDF5F5;
+}
+.title {
+  font-size:200%;
+}
+#login {
+  float:right;
+  margin-right:15px;
+}
+#sms-form em {
+  color: gray;
+}
+#sms-form label {
+  display: block;
+}
+#cal1Container {
+  display: none;
+}
+#reminder-count {
+  font-size: 120%;  
+}
+#signup-box {
+  background-color:#eee;
+  padding:5px;
+  margin-bottom:5px;
 }

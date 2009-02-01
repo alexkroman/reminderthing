@@ -1,29 +1,26 @@
 <div class="yui-g">
   <div class="yui-u first">
-    <div id="sms-form" style="width: 85%">
+    <div id="sms-form">
       <% form_for(@reminder) do |f| %>
         <fieldset>
         <%= f.error_messages :header_message => '',  :message => 'Please fix the following problems' %>
         <p>
         <%= f.label :phone_number, "Cell Number or Email" %>
-        <br />
         <%= f.text_field :phone_number %>
         <br />
-        <em style="color: gray;">555-555-555, alex@textremindme.com</em>
+        <em>555-555-555, alex@textremindme.com</em>
         </p>
         <p>
         <%= f.label :message, "Your Reminder" %>
-        <br />
         <%= f.text_field :message, :style => 'width:360px;' %>
         <br />
-        <em style="color: gray;">Go to lunch meeting, pick up a bottle of wine, wake up</em>
+        <em>Go to lunch meeting, pick up a bottle of wine, wake up</em>
         </p>
         <%= f.label :send_at_date, "Remind At" %>
-        <br />
         <%= f.text_field :send_at_date, :style => 'width: 85px;' %>
         <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 
         <%= f.text_field :time_zone, :style => 'display:none' %> 
-        <div id="cal1Container" style="display:none"></div>
+        <div id="cal1Container"></div>
         <div id="timeDiv">
           <table>
             <tr>
@@ -62,13 +59,13 @@
       </div>
     <% end %>
     <% if @reminders.blank? %>
-      <div style="font-size:140%">You don't have any scheduled reminders right now</div>
+      <div id="reminder-count">You don't have any scheduled reminders right now</div>
       <br />
     <% end %>
     <% @reminders.each do |email, days| %>
       <% count = 0 %>
       <% days.each{|x,y| count += y.size} %>
-    <div style="font-size:140%"><b><%=h count %></b> scheduled reminder<% unless count == 1 %>s<% end %> for <%=h format_delivery(email) %></div>
+      <div id="reminder-count"><b><%=h count %></b> scheduled reminder<% unless count == 1 %>s<% end %> for <%=h format_delivery(email) %></div>
       <br />
       <% days.each do |day, reminders| %>
         <b style="font-size:120%;"><%=h day %></b>
@@ -80,7 +77,7 @@
       <% end %>
     <% end %>
     <% unless logged_in? %>
-      <div style="background-color:#eee;padding:5px;margin-bottom:5px;"><%= link_to '<b>Create an account</b>', signup_path %> and access your scheduled reminders from any computer</div>
+      <div id="signup-box"><%= link_to '<b>Create an account</b>', signup_path %> and access your scheduled reminders from any computer</div>
     <% end %>
   </div>
 </div>

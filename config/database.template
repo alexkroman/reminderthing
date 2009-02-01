@@ -10,5 +10,9 @@ development:
  	  <<: *login
     
 test:
- 	  database: remindme_development
+ 	  database: remindme_test
+ 	  <<: *login
+
+production:
+ 	  database: 
  	  <<: *login

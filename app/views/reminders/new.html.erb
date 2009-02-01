@@ -8,13 +8,17 @@
         <%= f.label :phone_number, "Cell Number or Email" %>
         <br />
         <%= f.text_field :phone_number %>
+        <br />
+        <em style="color: gray;">555-555-555, alex@textremindme.com</em>
         </p>
         <p>
-        <%= f.label :message, "Your Reminder Message" %>
+        <%= f.label :message, "Your Reminder" %>
         <br />
         <%= f.text_field :message, :style => 'width:360px;' %>
+        <br />
+        <em style="color: gray;">Go to lunch meeting, pick up a bottle of wine, wake up</em>
         </p>
-        <%= f.label :send_at_date, "Delivery Time" %>
+        <%= f.label :send_at_date, "Remind At" %>
         <br />
         <%= f.text_field :send_at_date, :style => 'width: 85px;' %>
         <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 

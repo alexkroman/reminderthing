@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class BlockTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  context "A block" do
+
+    should "find a carrier" do
+
+    end
+
   end
+
 end

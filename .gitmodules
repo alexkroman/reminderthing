@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/shoulda"]
 	path = vendor/plugins/shoulda
 	url = git://github.com/thoughtbot/shoulda.git
+[submodule "vendor/plugins/model_factory"]
+	path = vendor/plugins/model_factory
+	url = git://github.com/zenhob/model_factory.git

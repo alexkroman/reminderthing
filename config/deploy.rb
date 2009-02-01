@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + "/deploy_local")
 require 'mongrel_cluster/recipes'
 
-set :application, "texttosms"
+set :application, "textremindme.com"
 set :repository,  "ssh://alex/var/git/reminder.git"
 
 # If you aren't deploying to /u/apps/#{application} on the target

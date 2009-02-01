@@ -16,8 +16,12 @@ function init() {
   nice_date = YAHOO.util.Date.format(Now, {format: '%b %d, %Y'})
   nice_time = YAHOO.util.Date.format(Now, {format: '%I:%M%P'})
 
-  YAHOO.util.Dom.get('reminder_send_at_date').value = nice_date;
-  YAHOO.util.Dom.get('reminder_send_at_time').value = nice_time;
+  if (YAHOO.util.Dom.get('reminder_send_at_date').value == '') {
+    YAHOO.util.Dom.get('reminder_send_at_date').value = nice_date;
+  }
+  if (YAHOO.util.Dom.get('reminder_send_at_time').value == '') {
+    YAHOO.util.Dom.get('reminder_send_at_time').value = nice_time;
+  }
 
   tzOffSet = Now.getTimezoneOffset();
   tzOffSet = tzOffSet / 60;

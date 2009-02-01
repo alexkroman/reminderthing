@@ -5,6 +5,8 @@ class RemindersController < ApplicationController
     if session[:reminder]
       @reminder = session[:reminder].clone
       @reminder.phone_number = session[:reminder].phone_number
+      @reminder.send_at_date = session[:reminder].send_at_date
+      @reminder.send_at_time = session[:reminder].send_at_time
     else
       @reminder = Reminder.new
     end
@@ -25,6 +27,8 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
+        @reminder.send_at_date = params[:reminder][:send_at_date]
+        @reminder.send_at_time = params[:reminder][:send_at_time]
         @reminder.phone_number = params[:reminder][:phone_number]
         session[:reminder] = @reminder
         flash[:notice] = "Your reminder \"#{@reminder.message}\" was scheduled."

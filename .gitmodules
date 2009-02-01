@@ -7,3 +7,6 @@
 [submodule "vendor/plugins/sms-fu"]
 	path = vendor/plugins/sms-fu
 	url = git://github.com/brendanlim/sms-fu.git
+[submodule "vendor/plugins/shoulda"]
+	path = vendor/plugins/shoulda
+	url = git://github.com/thoughtbot/shoulda.git

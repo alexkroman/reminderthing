@@ -149,3 +149,10 @@ a {
 #reminder-to {
   color: #2B2825;
 }
+.signup {
+  background-color: #eee;
+  padding: 3px;
+}
+.login {
+  font-size: 90%;
+}

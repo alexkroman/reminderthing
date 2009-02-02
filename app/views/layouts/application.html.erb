@@ -36,9 +36,9 @@
         <%= link_to 'Logout', logout_path %>
         <% else %>
           Want to save your reminders? 
-          <%= link_to '<b>Sign up now</b>', signup_path %>
+          <%= link_to '<b>Sign up now</b>', signup_path, :class => 'signup' %>
           or 
-          <%= link_to 'Login', login_path %>
+          <%= link_to 'Login', login_path, :class => 'login' %>
         <% end %>
       </div>
     <div class="fd">

@@ -16,3 +16,6 @@
 [submodule "vendor/plugins/mocha"]
 	path = vendor/plugins/mocha
 	url = git://github.com/floehopper/mocha.git
+[submodule "vendor/plugins/exception_notification"]
+	path = vendor/plugins/exception_notification
+	url = git://github.com/rails/exception_notification.git

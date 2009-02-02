@@ -16,22 +16,24 @@
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/datasource/datasource-min.js"></script> 
     <script type="text/javascript" src="/javascripts/application.js"></script>
   </head>
-  <body id="doc2" class="yui-skin-sam">
-    <div class="hd yui-gc">
-      <div class="yui-u first">
+  <body id="custom-doc" class="yui-skin-sam">
+    <div class="hd">
         <span class="title">reminderthing</span>
-        schedule simple reminders for any phone or email
-      </div>
-      <div id="login">
+        <br />
+        simple reminders for any phone or email
+        <br />
+        <br />
         <% unless logged_in? %>
-        <%= link_to 'Sign In', login_path %> or <%= link_to '<b>Sign up</b>', signup_path %>
+        <%= link_to 'Sign in', login_path %> or <%= link_to 'Sign up', signup_path %>
         <% else %>
-        <%= link_to 'Sign Out', logout_path  %>
+        <%= link_to 'Sign out', logout_path  %>
         <% end %>
-      </div>
     </div>
-    <div class="bd">
+    <div class="bd border">
       <%= yield %>
+    </div>
+    <div class="messages">
+      <%= (navigation = yield :navigation) ? navigation : render(:partial => 'shared/navigation') %>
     </div>
     <div class="fd">
       Follow us on <a href="#">Twitter</a>.  Send Suggestions to <a href="#">reminderthing@gmail.com</a>

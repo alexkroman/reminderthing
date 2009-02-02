@@ -1,0 +1,17 @@
+<% content_for :navigation do %>
+<%= link_to "Schedule reminder", new_reminder_path %>
+<% end %>
+<div id="reminders" class="yui-u">
+  <% @reminders.each do |email, days| %>
+  <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>
+  <br />
+  <% days.each do |day, reminders| %>
+  <span class="day"><%=h day %></span>
+  <ul>
+    <% reminders.each do |reminder| %>
+    <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> <em>at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <% end %>
+</div>

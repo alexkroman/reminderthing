@@ -1,0 +1,9 @@
+<% 
+size = @all_reminders.size
+reminder = "reminder" 
+reminder += 's' unless size == 1
+%> 
+
+<%= link_to "Schedule reminder", new_reminder_path %>
+or
+<%= link_to "See #{size} #{reminder}", reminders_path %>

@@ -1,56 +1,41 @@
-<div class="yui-g">
-  <div class="yui-u first">
-    <div class="border" id="sms-form">
-      <% form_for(@reminder) do |f| %>
-        <fieldset>
-        <%= f.error_messages :header_message => '',  :message => 'Please fix the following problems' %>
-        <p>
-        <%= f.label :phone_number, "Cell Number or Email" %>
-        <%= f.text_field :phone_number %>
-        <br />
-        <em>555-555-555 or alex@test.com</em>
-        </p>
-        <p>
-        <%= f.label :message, "Your Reminder" %>
-        <%= f.text_field :message, :style => 'width:300px;' %>
-        <br />
-        <em>Go to lunch meeting or pick up a bottle of wine</em>
-        </p>
-        <%= f.label :send_at_date, "When?" %>
-        <%= f.text_field :send_at_date, :style => 'width: 85px;' %>
-        <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 
-        <%= f.text_field :time_zone, :style => 'display:none' %> 
-        <%= f.submit "Schedule Reminder" %>
-        <div id="cal1Container"></div>
-        <div id="timeDiv">
-          <select multiple size="8" style="width: 100px;">
-            <% (Time.now.midnight..Time.now.tomorrow.midnight).step(30.minutes) do |time| %>
-            <option onclick="setTime('<%=h time.strftime('%I:%M%p') %>')"><%=h time.strftime('%I:%M%p') %></option>
-            <% end %>
-          </select>
-        </div>
-        <div style="clear:both"></div>
-      </fieldset>
-      <% end %>
-    </div>
-  </div>
-  <div id="reminders" class="yui-u">
-    <div id="reminder-count">You have <b><%= @all_reminders.size %></b> reminder<% unless @all_reminders.size == 1 %>s<% end %> waiting to go out.</div>
-    <br />
-    <% @reminders.each do |email, days| %>
-      <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>
+<% content_for :navigation do %>
+<% 
+size = @all_reminders.size
+reminder = "reminder" 
+reminder += 's' unless size == 1
+%> 
+<%= link_to "See #{size} #{reminder}", reminders_path %>
+<% end %>
+<div id="sms-form">
+  <% form_for(@reminder) do |f| %>
+  <fieldset>
+    <%= f.error_messages :header_message => '',  :message => 'Please fix the following problems' %>
+    <p>
+      <%= f.label :phone_number, "Cell Number or Email" %>
+      <%= f.text_field :phone_number %>
       <br />
-      <% days.each do |day, reminders| %>
-        <span class="day"><%=h day %></span>
-        <ul>
-          <% reminders.each do |reminder| %>
-          <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> <em>at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    <% end %>
-    <% unless logged_in? %>
-    <div id="signup-box"><%= link_to '<b>Sign up</b>', signup_path %> and access these reminders from any computer</div>
-    <% end %>
-  </div>
+      <em>555-555-555 or alex@test.com</em>
+    </p>
+    <p>
+      <%= f.label :message, "Your Reminder" %>
+      <%= f.text_field :message, :style => 'width:300px;' %>
+      <br />
+      <em>Go to lunch meeting or pick up a bottle of wine</em>
+    </p>
+    <%= f.label :send_at_date, "When?" %>
+    <%= f.text_field :send_at_date, :style => 'width: 85px;' %>
+    <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 
+    <%= f.text_field :time_zone, :style => 'display:none' %> 
+    <%= f.submit "Schedule Reminder" %>
+    <div id="cal1Container"></div>
+    <div id="timeDiv">
+      <select multiple size="8" style="width: 100px;">
+        <% (Time.now.midnight..Time.now.tomorrow.midnight).step(30.minutes) do |time| %>
+        <option onclick="setTime('<%=h time.strftime('%I:%M%p') %>')"><%=h time.strftime('%I:%M%p') %></option>
+        <% end %>
+      </select>
+    </div>
+    <div style="clear:both"></div>
+  </fieldset>
+  <% end %>
 </div>

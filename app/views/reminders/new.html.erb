@@ -1,11 +1,3 @@
-<% content_for :navigation do %>
-<% 
-size = @all_reminders.size
-reminder = "reminder" 
-reminder += 's' unless size == 1
-%> 
-<%= link_to "See #{size} #{reminder}", reminders_path %>
-<% end %>
 <div id="sms-form">
   <% form_for(@reminder) do |f| %>
   <fieldset>

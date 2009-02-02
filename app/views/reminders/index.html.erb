@@ -1,6 +1,3 @@
-<% content_for :navigation do %>
-<%= link_to "Schedule reminder", new_reminder_path %>
-<% end %>
 <div id="reminders" class="yui-u">
   <% @reminders.each do |email, days| %>
   <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>

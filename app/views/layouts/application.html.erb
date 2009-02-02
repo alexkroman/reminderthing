@@ -23,7 +23,9 @@
         simple reminders for phone or email
         <div id="login">
           <% unless logged_in? %>
-          <%= link_to_unless_current '<b>Sign up</b>', signup_path, :style => 'font-size: 180%;' %> and save your reminders in your account
+            <%= link_to '<b>Sign up</b>', signup_path %>
+            &middot;
+            <%= link_to_unless_current "New Reminder", new_reminder_path %>
           <% end %>
         </div>
     </div>
@@ -39,7 +41,7 @@
         <% if logged_in? %>
           <%= link_to 'Logout', logout_path, :style => 'font-size:70%;'  %>
         <% else %>
-          <%= link_to_unless_current 'Login', login_path, :style => 'font-size: 70%;' %> 
+          <%= link_to 'Login', login_path, :style => 'font-size: 70%;' %> 
         <% end %>
       </div>
     <div class="fd">

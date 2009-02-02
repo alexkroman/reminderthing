@@ -75,4 +75,4 @@ Rails::Initializer.run do |config|
 end
 
 ActionView::Base.field_error_proc = Proc.new{ |html_tag, instance| "<span class=\"field_with_errors\">#{html_tag}</span>" }
-ExceptionNotifier.exception_recipients = %w(alexkroman@gmail.com)
+ExceptionNotifier.exception_recipients = "alexkroman@gmail.com"

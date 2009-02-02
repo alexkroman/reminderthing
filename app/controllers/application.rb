@@ -28,10 +28,7 @@ class ApplicationController < ActionController::Base
       @all_reminders = Reminder.find_guest(session[:csrf_id])
     end
 
-    emails = @all_reminders.map{|r| r.email}.uniq.sort
-    emails.each do |email|
-      @reminders[email] = @all_reminders.select{|r| r.email == email}.group_by(&:send_at_date_display)
-    end
+    @reminders = @all_reminders.group_by(&:send_at_date_display)
   end
 
 end

@@ -18,22 +18,30 @@
   </head>
   <body id="custom-doc" class="yui-skin-sam">
     <div class="hd">
-      <a href="/"><span class="title">reminderthing</span></a>
+      <a href="/"><span id="title">reminderthing</span></a>
         <br />
         simple reminders for phone or email
-        <br />
-        <% unless logged_in? %>
-        <%= link_to_unless_current 'Sign in', login_path %> &middot; <%= link_to_unless_current 'Sign up', signup_path %>
-        <% else %>
-        <%= link_to_unless_current 'Sign out', logout_path  %>
-        <% end %>
+        <div id="login">
+          <% unless logged_in? %>
+          <%= link_to_unless_current '<b>Sign up</b>', signup_path, :style => 'font-size: 180%;' %> and save your reminders in your account
+          <% end %>
+        </div>
     </div>
-    <div class="messages">
-      <%= (navigation = yield :navigation) ? navigation : render(:partial => 'shared/navigation') %>
-    </div>
+    <% if logged_in? %>
+      <div class="messages">
+          <%= (navigation = yield :navigation) ? navigation : render(:partial => 'shared/navigation') %>
+      </div>
+    <% end %>
     <div class="bd border">
       <%= yield %>
     </div>
+      <div class="messages">
+        <% if logged_in? %>
+          <%= link_to 'Logout', logout_path, :style => 'font-size:70%;'  %>
+        <% else %>
+          <%= link_to_unless_current 'Login', login_path, :style => 'font-size: 70%;' %> 
+        <% end %>
+      </div>
     <div class="fd">
       Follow us on <a href="#">Twitter</a>.  Send Suggestions to <a href="#">reminderthing@gmail.com</a>
     </div>

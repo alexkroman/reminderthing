@@ -74,16 +74,18 @@ a {
   background-color: #FCF8BC;
   color: #2B2825;
 }
-.title {
+#title {
   background-color: #2B2825;
   color: #FCF8BC;
   font-size:280%;
   padding-left: 5px;
   padding-right: 5px;
 }
+#title a {
+  text-decoration: none;
+}
 #login {
-  float:right;
-  margin-right:15px;
+  margin-top:10px;
 }
 #sms-form em {
   color: gray;
@@ -109,6 +111,9 @@ a {
 }
 .day {
   font-size: 120%;
+}
+ul {
+  margin-top: 0px;
 }
 a.remove {
   font-size: 80%;
@@ -145,3 +150,4 @@ a {
 #reminder-to {
   color: #2B2825;
 }
+

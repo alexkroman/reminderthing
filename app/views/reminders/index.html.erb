@@ -1,7 +1,6 @@
 <div id="reminders" class="yui-u">
   <% @reminders.each do |email, days| %>
   <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>
-  <br />
   <% days.each do |day, reminders| %>
   <span class="day"><%=h day %></span>
   <ul>
@@ -11,4 +10,5 @@
   </ul>
   <% end %>
   <% end %>
+  <%= link_to 'Schedule another reminder', new_reminder_path %>
 </div>

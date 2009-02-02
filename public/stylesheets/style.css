@@ -109,7 +109,8 @@ a {
 }
 .day {
   font-size: 120%;
-  background-color: #eee;
+  color: #D6156C;
+  font-weight: bold;
 }
 a.remove {
   font-size: 80%;
@@ -132,11 +133,6 @@ a.remove {
   text-align: center;
 }
 
-.CB_option {
-  cursor:pointer;
-  font-family:Arial;
-  padding:2px;
-}
 .messages {
   background-color: #FCF8BC;
   text-align: center;
@@ -147,4 +143,7 @@ a.remove {
 
 a {
  color: #0B8C8F;
+}
+#reminder-to {
+  color: #2B2825;
 }

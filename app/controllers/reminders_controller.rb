@@ -68,14 +68,14 @@ class RemindersController < ApplicationController
   def find_reminders
     @reminders = {}
     if logged_in?
-      all_reminders = Reminder.find_owned(current_user)
+      @all_reminders = Reminder.find_owned(current_user)
     else
-      all_reminders = Reminder.find_guest(session[:csrf_id])
+      @all_reminders = Reminder.find_guest(session[:csrf_id])
     end
 
-    emails = all_reminders.map{|r| r.email}.uniq.sort
+    emails = @all_reminders.map{|r| r.email}.uniq.sort
     emails.each do |email|
-      @reminders[email] = all_reminders.select{|r| r.email == email}.group_by(&:send_at_date_display)
+      @reminders[email] = @all_reminders.select{|r| r.email == email}.group_by(&:send_at_date_display)
     end
   end
 

@@ -50,14 +50,10 @@
     </div>
   </div>
   <div id="reminders" class="yui-u">
-    <% if @reminders.blank? %>
-    <div id="reminder-count">You have <b>0</b> reminders waiting to go out.</div>
-      <br />
-    <% end %>
+    <div id="reminder-count">You have <b><%= @all_reminders.size %></b> reminder<% unless @all_reminders.size == 1 %>s<% end %> waiting to go out.</div>
+    <br />
     <% @reminders.each do |email, days| %>
-      <% count = 0 %>
-      <% days.each{|x,y| count += y.size} %>
-      <div id="reminder-count"><b><%=h format_delivery(email) %></b> has <%=h count %> scheduled reminder<% unless count == 1 %>s<% end %></div>
+      <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>
       <br />
       <% days.each do |day, reminders| %>
         <span class="day"><%=h day %></span>

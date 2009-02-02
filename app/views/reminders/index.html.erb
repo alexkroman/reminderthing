@@ -1,7 +1,10 @@
-<div id="reminders" class="yui-u">
-  <% unless logged_in? %>
-  <div style="margin-bottom:5px;background-color: #eee;padding:5px;">You can <%= link_to 'create', new_reminder_path %> <b>1</b> more reminder before <%= link_to 'signing up', new_user_path %>.</div>
+<% unless logged_in? %>
+  <% content_for :navigation do %>
+  Want to save your reminders? <%= link_to 'Sign up today!', new_user_path %>
   <% end %>
+<% end %>
+
+<div id="reminders" class="yui-u">
   <% @reminders.each do |email, days| %>
   <div id="reminder-to"><b><%=h format_delivery(email) %></b></div>
   <% days.each do |day, reminders| %>
@@ -13,4 +16,5 @@
   </ul>
   <% end %>
   <% end %>
+  <%= button_to 'Schedule Another Reminder', new_reminder_path %>
 </div>

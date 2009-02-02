@@ -1,8 +1,0 @@
-<% 
-size = @all_reminders.size
-reminder = "reminder" 
-reminder += 's' unless size == 1
-%> 
-<%= link_to_unless_current "New", new_reminder_path %>
-&middot;
-<%= link_to_unless_current "#{size} #{reminder}", reminders_path %>

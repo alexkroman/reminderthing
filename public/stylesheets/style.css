@@ -140,7 +140,6 @@ a.remove {
   background-color: #FCF8BC;
   text-align: center;
   padding: 10px;
-  font-size:120%;
   font-weight: bold;
 }
 
@@ -150,4 +149,3 @@ a {
 #reminder-to {
   color: #2B2825;
 }
-

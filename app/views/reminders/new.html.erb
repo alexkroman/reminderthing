@@ -12,7 +12,7 @@
         </p>
         <p>
         <%= f.label :message, "Your Reminder" %>
-        <%= f.text_field :message, :style => 'width:360px;' %>
+        <%= f.text_field :message, :style => 'width:300px;' %>
         <br />
         <em>Go to lunch meeting, pick up a bottle of wine, wake up</em>
         </p>
@@ -20,6 +20,7 @@
         <%= f.text_field :send_at_date, :style => 'width: 85px;' %>
         <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 
         <%= f.text_field :time_zone, :style => 'display:none' %> 
+        <%= f.submit "Schedule Reminder" %>
         <div id="cal1Container"></div>
         <div id="timeDiv">
           <table>
@@ -44,10 +45,6 @@
           </table> 
         </div>
         <div style="clear:both"></div>
-        <br />
-        <p>
-        <%= f.submit "Schedule Reminder" %>
-        </p>
       </fieldset>
       <% end %>
     </div>

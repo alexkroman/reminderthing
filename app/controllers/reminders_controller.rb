@@ -24,7 +24,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to(reminders_path) }
+        format.html { redirect_to(new_reminder_path) }
       else
         format.html { render :action => "new" }
       end
@@ -38,7 +38,7 @@ class RemindersController < ApplicationController
       @reminder = Reminder.find_by_id_and_session_id(params[:id], session[:csrf_id])
     end
     @reminder.destroy
-    redirect_to(reminders_path)
+    redirect_to(new_reminder_path)
   end
 
   def send_messages

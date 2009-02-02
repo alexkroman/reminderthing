@@ -128,3 +128,9 @@ a.remove {
   text-align: center;
   margin-bottom: 40px;
 }
+
+.CB_option {
+  cursor:pointer;
+  font-family:Arial;
+  padding:2px;
+}

@@ -1,3 +1,4 @@
+<% unless @reminders.empty? %>
 <div id="reminders" style="padding:15px;">
   <% @reminders.each do |day, reminders| %>
   <span class="day"><b><%=h day %></b></span>
@@ -10,6 +11,7 @@
   </ul>
   <% end %>
 </div>
+<% end %>
 <div id="sms-form">
   <% form_for(@reminder) do |f| %>
   <fieldset>

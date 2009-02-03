@@ -51,8 +51,10 @@
 .grey {
   background-color: #eee;
 }
-#sms-form {
+#divider {
   border-top: 4px solid #000E2E;
+}
+#sms-form {
   background-color: #FFF;
   padding: 15px;
 }

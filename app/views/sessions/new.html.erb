@@ -1,11 +1,14 @@
-<h1>Login</h1>
+<div id="sms-form">
+<h2>Login and see your reminders</h2>
 
 <% form_tag session_path do -%>
-<p><%= label_tag 'email' %><br />
+<p><%= label_tag 'email' %>
   <%= text_field_tag 'email', @login %></p>
 
-<p><%= label_tag 'password' %><br/>
+<p><%= label_tag 'password' %>
   <%= password_field_tag 'password', nil %></p>
 
-<p><%= submit_tag 'Sign in' %></p>
+<p><%= submit_tag 'Login' %></p>
 <% end -%>
+
+</div>

@@ -2,6 +2,10 @@
 <h2>Login and see your reminders</h2>
 
 <% form_tag session_path do -%>
+<fieldset>
+  <% if flash[:error] %>
+    <div class="errorExplanation"><%= flash[:error] %></div>
+  <% end %>
 <p><%= label_tag 'email' %>
   <%= text_field_tag 'email', @login %></p>
 
@@ -9,6 +13,7 @@
   <%= password_field_tag 'password', nil %></p>
 
 <p><%= submit_tag 'Login' %></p>
+</fieldset>
 <% end -%>
 
 </div>

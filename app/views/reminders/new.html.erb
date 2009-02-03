@@ -16,7 +16,7 @@
 <div id="sms-form">
   <% form_for(@reminder) do |f| %>
   <fieldset>
-    <%= f.error_messages :header_message => '',  :message => 'Please fix the following problems' %>
+    <%= f.error_messages :header_message => '',  :message => 'We had problems creating your reminder' %>
     <p>
       <%= f.label :phone_number, "Cell Number or Email" %>
       <%= f.text_field :phone_number %>

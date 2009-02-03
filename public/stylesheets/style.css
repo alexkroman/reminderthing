@@ -52,7 +52,8 @@
   background-color: #eee;
 }
 #sms-form {
-  background-color: #C2C8D1;
+  border-top: 4px solid #000E2E;
+  background-color: #FFF;
   padding: 15px;
 }
 #sms-form label {
@@ -112,6 +113,7 @@ a {
 }
 .day {
   font-size: 120%;
+  color: #000E2E;
 }
 ul {
   margin-top: 10px;
@@ -131,15 +133,15 @@ a.remove {
   position:absolute;
 }
 .fd {
-  color: #ccc;
+  color: #777;
   font-size:84%;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
 }
 
 .messages {
   background-color: #000E2E;
-  color: #F4FFF9;
+  color: #FFF;
   text-align: center;
   padding: 10px;
 }

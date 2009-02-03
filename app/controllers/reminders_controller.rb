@@ -1,10 +1,6 @@
 class RemindersController < ApplicationController
   before_filter :set_timezone, :find_reminders, :except => [:send_messages]
 
-  def index
-    redirect_to new_reminder_path if @all_reminders.size == 0
-  end
-
   def new
     @reminder = Reminder.new
 

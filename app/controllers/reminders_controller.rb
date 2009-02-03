@@ -1,5 +1,4 @@
 class RemindersController < ApplicationController
-  before_filter :set_timezone, :find_reminders, :except => [:send_messages]
 
   def new
     @reminder = Reminder.new
@@ -42,15 +41,6 @@ class RemindersController < ApplicationController
       ReminderMailer.deliver_message(reminder) && reminder.sent!
     end
     render :nothing => true
-  end
-
-  private
-
-  def set_timezone
-    if params[:reminder] and params[:reminder][:time_zone]
-      session[:time_zone] = params[:reminder][:time_zone].to_i
-    end
-    Time.zone = 0 - session[:time_zone].to_i if session[:time_zone]
   end
 
 end

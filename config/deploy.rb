@@ -18,6 +18,7 @@ set :git_enable_submodules, 1
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 set :scm_verbose, true
+set :keep_releases, 3
 
 role :app, "alex"
 role :web, "alex"

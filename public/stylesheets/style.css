@@ -118,16 +118,8 @@ a {
   font-size: 120%;
   color: #000E2E;
 }
-ul {
-  margin-top: 10px;
-}
 a.remove {
-  font-size: 80%;
-}
-#reminders li {
-  font-size: 90%;
-  list-style: none;
-  margin-left: -22px;
+  margin-right: 5px;
 }
 #cal1Container {
   position:absolute;
@@ -167,12 +159,18 @@ a {
 #reminders {
   background-color: #F4FFF9;
 }
-#reminders .delivery-date {
-  margin-bottom: 5px;
-}
 
 .fd a {
   color: #000E2E;
 }
 
+#reminders table td {
+  padding: 0px;
+  padding-top: 5px;
+  font-size: 90%;
+  border: 0;
+}
 
+#reminders table {
+  margin-top: 10px;
+}

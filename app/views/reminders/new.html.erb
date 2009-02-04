@@ -2,15 +2,19 @@
 <div id="reminders" style="padding:15px;">
   <% @reminders.each do |day, reminders| %>
   <span class="day"><b><%=h day %></b></span>
-  <ul>
+      <table id="reminders">
     <% reminders.each do |reminder| %>
-    <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> 
-      <div class="delivery-date">
-        <em style="color: #777;"><%= format_delivery reminder.email %> at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %>
-      </div>
-    </li>
+        <tr>
+          <td><%= link_to image_tag('cancel.png'), reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></td>
+          <td>
+            <span style="font-size:120%;">"<%=h reminder.message %>"</span> 
+              <div class="delivery-date">
+                <em style="color: #777;"><%= format_delivery reminder.email %> at <%=h reminder.send_at_time_display %></em> 
+              </div>
+          </td>
+        </tr>
     <% end %>
-  </ul>
+      </table>
   <% end %>
 </div>
 <% end %>

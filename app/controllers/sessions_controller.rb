@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       old_reminders = Reminder.find_all_by_session_id(session[:csrf_id])
       current_user.give_ownership_of(old_reminders)
+      current_user.time_zone = session[:time_zone] if session[:time_zone]
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       redirect_to new_reminder_path

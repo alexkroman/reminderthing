@@ -9,7 +9,7 @@
           <td>
             <span style="font-size:120%;">"<%=h reminder.message %>"</span> 
               <div class="delivery-date">
-                <em style="color: #777;"><%= format_delivery reminder.email %> at <%=h reminder.send_at_time_display %></em> 
+                <em style="color: #777;"><%= format_delivery reminder.email %> <%= '<b>sent</b>' if reminder.sent? %> at <%=h reminder.send_at_time_display %></em> 
               </div>
           </td>
         </tr>

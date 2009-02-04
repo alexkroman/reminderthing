@@ -7,7 +7,7 @@
         <tr>
           <td><%= link_to image_tag('cancel.png'), reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></td>
           <td>
-            <span style="font-size:120%;">"<%=h reminder.message %>"</span> 
+            <span style="font-size:120%;"><%=h reminder.message %></span> 
               <div class="delivery-date">
                 <em style="color: #777;"><%= format_delivery reminder.email %> 
                   <% if reminder.sent? %>

@@ -167,6 +167,9 @@ a {
 #reminders {
   background-color: #F4FFF9;
 }
+#reminders .delivery-date {
+  margin-bottom: 5px;
+}
 
 .fd a {
   color: #000E2E;

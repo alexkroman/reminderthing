@@ -5,8 +5,10 @@
   <ul>
     <% reminders.each do |reminder| %>
     <li><span style="font-size:120%;">"<%=h reminder.message %>"</span> 
-    <br />
-    <em style="color: #777;"><%= format_delivery reminder.email %> at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></li>
+      <div class="delivery-date">
+        <em style="color: #777;"><%= format_delivery reminder.email %> at <%=h reminder.send_at_time_display %></em> <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %>
+      </div>
+    </li>
     <% end %>
   </ul>
   <% end %>

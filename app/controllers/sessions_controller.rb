@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset_session
       self.current_user = user
+      old_reminders = Reminder.find_all_by_session_id(session[:csrf_id])
+      current_user.give_ownership_of(old_reminders)
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       redirect_to new_reminder_path

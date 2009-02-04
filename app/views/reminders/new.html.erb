@@ -3,7 +3,7 @@
   <% @reminders.each do |day, reminders| %>
   <% unless logged_in? %>
     <div style="padding:5px;background-color:#C2C8D1;color: #000;margin-bottom:5px;">
-      <%= link_to 'Sign up now', new_user_path, :style => 'font-weight:bold;color: #000;' %> to save these reminders forever 
+      <%= link_to 'Sign up now', new_user_path, :style => 'font-weight:bold;color: #000;' %> or <%= link_to 'login', new_session_path, :style => 'color:#000;' %> to save these reminders 
     </div>
   <% end %>
   <span class="day"><b><%=h day %></b></span>

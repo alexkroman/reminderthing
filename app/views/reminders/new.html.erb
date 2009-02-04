@@ -9,7 +9,12 @@
           <td>
             <span style="font-size:120%;">"<%=h reminder.message %>"</span> 
               <div class="delivery-date">
-                <em style="color: #777;"><%= format_delivery reminder.email %> <%= '<b>sent</b>' if reminder.sent? %> at <%=h reminder.send_at_time_display %></em> 
+                <em style="color: #777;"><%= format_delivery reminder.email %> 
+                  <% if reminder.sent? %>
+                    <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
+                  <% else %>
+                    at <%=h reminder.send_at_time_display %></em> 
+                <% end %>
               </div>
           </td>
         </tr>
@@ -43,7 +48,7 @@
     <div id="cal1Container"></div>
     <div id="timeDiv">
       <select multiple size="8" style="width: 100px;">
-        <% (Time.now.midnight..Time.now.tomorrow.midnight).step(30.minutes) do |time| %>
+        <% (Time.now..Time.now + 23.hours).step(30.minutes) do |time| %>
         <option onclick="setTime('<%=h time.strftime('%I:%M%p') %>')"><%=h time.strftime('%I:%M%p') %></option>
         <% end %>
       </select>

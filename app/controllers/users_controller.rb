@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     logout_keeping_session!
     @user = User.new(params[:user])
     @user.time_zone = session[:time_zone]
+    @user.phone_number = session[:phone_number]
     success = @user && @user.save
     if success && @user.errors.empty?
             # Protects against session fixation attacks, causes request forgery

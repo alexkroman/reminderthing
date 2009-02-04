@@ -2,6 +2,7 @@ class RemindersController < ApplicationController
 
   def new
     @reminder = Reminder.new
+    @reminder.phone_number = logged_in? ? current_user.phone_number : session[:phone_number]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -13,9 +14,13 @@ class RemindersController < ApplicationController
     @reminder = Reminder.new(params[:reminder])
     if logged_in?
       @reminder.user = current_user
+      current_user.phone_number = session[:phone_number]
+      current_user.save!
     else
       @reminder.session_id = session[:csrf_id]
+      session[:phone_number] = @reminder.phone_number
     end
+
 
     respond_to do |format|
       if @reminder.save

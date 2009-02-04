@@ -1,6 +1,11 @@
 <% unless @reminders.empty? %>
 <div id="reminders" style="padding:15px;">
   <% @reminders.each do |day, reminders| %>
+  <% unless logged_in? %>
+    <div style="padding:5px;background-color:#C2C8D1;color: #000;margin-bottom:5px;">
+      <%= link_to 'Sign up now', new_user_path, :style => 'font-weight:bold;color: #000;' %> to save these reminders forever 
+    </div>
+  <% end %>
   <span class="day"><b><%=h day %></b></span>
       <table id="reminders">
     <% reminders.each do |reminder| %>

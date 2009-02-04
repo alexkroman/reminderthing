@@ -1,4 +1,9 @@
 #custom-doc { width:27.69em;*width:27.02em;min-width:360px; margin:auto; text-align:left; }
+#addressBook {
+  margin-top: 3px;
+  display: none;
+  position: absolute;
+}
 #timeDiv { 
   margin-top: -5px;
   width: 130px;

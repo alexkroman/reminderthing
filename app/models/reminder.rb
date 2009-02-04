@@ -1,6 +1,6 @@
 class Reminder < ActiveRecord::Base
   include SMSFu
-  attr_accessor :phone_number, :send_at_date, :send_at_time, :time_zone
+  attr_accessor :normalized_phone_number, :phone_number, :send_at_date, :send_at_time, :time_zone
 
   belongs_to :user
 
@@ -51,7 +51,7 @@ class Reminder < ActiveRecord::Base
   private
 
   def carrier
-    Block.find_carrier(phone_number)
+    Block.find_carrier(normalized_phone_number)
   end
 
   def validate_email
@@ -68,7 +68,7 @@ class Reminder < ActiveRecord::Base
   end
 
   def set_email
-    self.email = get_sms_address(phone_number, carrier) unless self.email
+    self.email = get_sms_address(self.normalized_phone_number, carrier) unless self.email
   rescue
     nil
   end
@@ -80,7 +80,7 @@ class Reminder < ActiveRecord::Base
   end
 
   def normalize_phone_number
-    self.phone_number = self.phone_number.gsub(/\D/,'')
+    self.normalized_phone_number = self.phone_number.gsub(/\D/,'')
   end
   
 end

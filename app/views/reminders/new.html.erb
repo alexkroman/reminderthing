@@ -30,7 +30,16 @@
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your reminder' %>
     <p>
       <%= f.label :phone_number, "Cell Number or Email" %>
-      <%= f.text_field :phone_number %>
+      <%= f.text_field :phone_number, :autocomplete => 'off' %>
+      <span id="addressBook">
+        <% if @emails.size > 1 %>
+        <select multiple size="5" style="width: 160px;">
+          <% @emails.each do |number| %>
+          <option onclick="setPhoneNumber('<%=h format_delivery(number.email) %>')"><%=h format_delivery(number.email) %></option>
+          <% end %>
+        </select>
+        <% end %>
+      </span>
       <br />
       <em>555-555-555 or alex@test.com</em>
     </p>

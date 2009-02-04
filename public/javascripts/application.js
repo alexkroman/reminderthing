@@ -5,12 +5,16 @@ function init() {
   var focusedElement = null;
   YAHOO.util.Event.addListener("cal1Container", "mouseover", function() { focusedElement = 'cal1Container' });
   YAHOO.util.Event.addListener("cal1Container", "mouseout", function() { focusedElement = null });
+  YAHOO.util.Event.addListener("addressBook", "mouseover", function() { focusedElement = 'addressBook' });
+  YAHOO.util.Event.addListener("addressBook", "mouseout", function() { focusedElement = null });
   YAHOO.util.Event.addListener("reminder_send_at_date", "blur", function() { if (focusedElement != 'cal1Container') { YAHOO.util.Dom.setStyle('cal1Container', 'display', 'none');}});
   YAHOO.util.Event.addListener("timeDiv", "mouseover", function() { focusedElement = 'timeDiv' });
   YAHOO.util.Event.addListener("timeDiv", "mouseout", function() { focusedElement = null });
   YAHOO.util.Event.addListener("reminder_send_at_time", "blur", function() { if (focusedElement != 'timeDiv') { YAHOO.util.Dom.setStyle('timeDiv', 'display', 'none');}});
   YAHOO.util.Event.addListener("reminder_send_at_time", "focus", showTime);
   YAHOO.util.Event.addListener("reminder_send_at_date", "focus", showCalendar) 
+  YAHOO.util.Event.addListener("reminder_phone_number", "focus", showAddressBook) 
+  YAHOO.util.Event.addListener("reminder_phone_number", "blur", function() { if (focusedElement != 'addressBook') { YAHOO.util.Dom.setStyle('addressBook', 'display', 'none');}});
 
   Now = new Date();
   nice_date = YAHOO.util.Date.format(Now, {format: '%b %d, %Y'})
@@ -33,10 +37,20 @@ function setTime(time) {
   YAHOO.util.Dom.setStyle('timeDiv','display','none')
     return false;
 }
+function setPhoneNumber(number) {
+  YAHOO.util.Dom.get('reminder_phone_number').value = number;
+  YAHOO.util.Dom.setStyle('addressBook','display','none')
+    return false;
+}
 
 function showCalendar() {
   YAHOO.util.Dom.setStyle('timeDiv','display','none')
     YAHOO.util.Dom.setStyle('cal1Container','display','block')
+}
+
+function showAddressBook() {
+  YAHOO.util.Dom.get('reminder_phone_number').select();
+  YAHOO.util.Dom.setStyle('addressBook','display','block')
 }
 
 function showTime() {

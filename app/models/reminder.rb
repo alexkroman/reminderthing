@@ -38,13 +38,13 @@ class Reminder < ActiveRecord::Base
 
   def self.find_guest(session_id)
     Reminder.find(:all,
-                  :conditions => ['send_at >= ? AND session_id = ?', Date.today, session_id],
+                  :conditions => ['send_at >= ? AND session_id = ?', Time.now.midnight, session_id],
                   :order => 'send_at ASC')
   end
 
   def self.find_owned(user)
     Reminder.find(:all,
-                  :conditions => ['send_at >= ? AND user_id = ?', Date.today, user.id],
+                  :conditions => ['send_at >= ? AND user_id = ?', Time.now.midnight, user.id],
                   :order => 'send_at ASC')
   end
 

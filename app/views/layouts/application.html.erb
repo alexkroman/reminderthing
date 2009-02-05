@@ -15,8 +15,8 @@
   <body id="custom-doc" class="yui-skin-sam">
     <div class="hd">
       <a href="/"><span id="title">reminderthing</span></a>
-        <br />
-        simple reminders for phone or email
+      <br />
+      simple reminders for phone or email
     </div>
     <div class="bd border">
       <% (navigation = yield :navigation) %>
@@ -27,15 +27,15 @@
       <% end %>
       <%= yield %>
     </div>
-      <div class="messages">
-        <% if logged_in? %>
-        <%= link_to 'Logout', logout_path %>
-        <% else %>
-          <%= link_to '<b>Sign up now</b>', signup_path, :class => 'signup' %>
-          or 
-          <%= link_to 'Login', login_path, :class => 'login' %>
-        <% end %>
-      </div>
+    <div class="messages">
+      <% if logged_in? %>
+      <%= link_to 'Logout', logout_path %>
+      <% else %>
+      <%= link_to '<b>Sign up now</b>', signup_path, :class => 'signup' %>
+      or 
+      <%= link_to 'Login', login_path, :class => 'login' %>
+      <% end %>
+    </div>
     <div class="fd">
       Follow us on <a href="#">Twitter</a>.  Send Suggestions to <a href="#">reminderthing@gmail.com</a>
     </div>

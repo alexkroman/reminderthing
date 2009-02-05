@@ -54,8 +54,9 @@ function showAddressBook() {
 }
 
 function showTime() {
+  YAHOO.util.Dom.get('reminder_send_at_time').focus();
   YAHOO.util.Dom.setStyle('cal1Container','display','none')
-    YAHOO.util.Dom.setStyle('timeDiv','display','block')
+  YAHOO.util.Dom.setStyle('timeDiv','display','block')
 }
 
 function hideCalendar() {
@@ -74,7 +75,7 @@ function mySelectHandler(type,args,obj) {
   var selDate = this.toDate(selected[0]); 
   YAHOO.util.Dom.get('reminder_send_at_date').value = dateToLocaleString(selDate, this); 
   hideCalendar();
-
+  showTime();
 }; 
 
 YAHOO.example.calendar.init = function() {

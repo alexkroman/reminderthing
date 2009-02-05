@@ -37,7 +37,7 @@ class RemindersController < ApplicationController
       @reminder = Reminder.find_by_id_and_session_id(params[:id], session[:csrf_id])
     end
     @reminder.destroy
-    redirect_to(new_reminder_path)
+    redirect_to(root_path)
   end
 
   def send_messages

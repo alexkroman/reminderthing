@@ -7,7 +7,7 @@
     </div>
   <% end %>
   <span class="day"><b><%=h day %></b></span>
-      <table id="reminders">
+  <table>
     <% reminders.each do |reminder| %>
         <tr>
           <td><%= link_to image_tag('cancel.png'), reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></td>
@@ -35,10 +35,10 @@
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your reminder' %>
     <p>
       <%= f.label :phone_number, "Cell Number or Email" %>
-      <%= f.text_field :phone_number, :autocomplete => 'off' %>
+      <%= f.text_field :phone_number %>
       <span id="addressBook">
         <% if @emails.size > 1 %>
-        <select multiple size="5" style="width: 160px;">
+        <select multiple="multiple" size="5" style="width: 160px;">
           <% @emails.each do |number| %>
           <option onclick="setPhoneNumber('<%=h format_delivery(number.email) %>')"><%=h format_delivery(number.email) %></option>
           <% end %>
@@ -61,7 +61,7 @@
     <%= f.submit "Schedule Reminder" %>
     <div id="cal1Container"></div>
     <div id="timeDiv">
-      <select multiple size="8" style="width: 100px;">
+      <select multiple="multiple" size="8" style="width: 100px;">
         <% ((Time.now - Time.now.min.minutes)..(Time.now - Time.now.min.minutes)+ 23.hours).step(30.minutes) do |time| %>
         <option onclick="setTime('<%=h time.strftime('%I:%M%p') %>')"><%=h time.strftime('%I:%M%p') %></option>
         <% end %>

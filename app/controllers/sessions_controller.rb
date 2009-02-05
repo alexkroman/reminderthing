@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    redirect_to new_reminder_path
+    redirect_to root_path
   end
 
 protected

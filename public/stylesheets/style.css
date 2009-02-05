@@ -179,3 +179,8 @@ a {
 #reminders table {
   margin-top: 10px;
 }
+
+input[type="text"],
+input[type="password"] {
+  width: 300px;
+}

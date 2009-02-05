@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       current_user.time_zone = session[:time_zone] if session[:time_zone]
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_to new_reminder_path
+      redirect_to root_path
       flash[:notice] = "Logged in successfully"
     else
       note_failed_signin

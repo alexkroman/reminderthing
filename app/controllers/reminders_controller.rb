@@ -23,7 +23,7 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to(new_reminder_path) }
+        format.html { redirect_to(root_path) }
       else
         format.html { render :action => "new" }
       end

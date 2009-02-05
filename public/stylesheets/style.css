@@ -162,6 +162,7 @@ a {
   font-size: 90%;
 }
 #reminders {
+  padding: 15px;
   background-color: #F4FFF9;
 }
 
@@ -183,4 +184,27 @@ a {
 input[type="text"],
 input[type="password"] {
   width: 300px;
+}
+
+.message {
+  font-size:120%;
+}
+
+em.email {
+  color: #777;
+}
+
+#please-login {
+ padding:5px;
+ background-color:#C2C8D1;
+ color: #000;
+ margin-bottom:5px;
+}
+
+.bold {
+  font-weight:bold;
+}
+
+#please-login a {
+  color: #000;
 }

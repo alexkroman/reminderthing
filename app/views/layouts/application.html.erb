@@ -5,12 +5,12 @@
     <meta name="description" content="Schedule free SMS text message reminders for any phone or email">
     <meta name="keywords" content="text reminders, text message reminders, free sms, free reminders, sms reminders, free sms, text reminder, sms reminder, free text messages, text messaging, free texting" />
     <title>reminderthing - free text message and sms messages</title>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/reset/reset.css" />
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/fonts/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/grids/grids.css" />
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/base/base.css" />
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/calendar/assets/skins/sam/calendar.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <%= stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/reset/reset.css" %>
+    <%= stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/fonts/fonts.css" %>
+    <%= stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/grids/grids.css" %>
+    <%= stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/base/base.css" %>
+    <%= stylesheet_link_tag "http://yui.yahooapis.com/2.6.0/build/calendar/assets/skins/sam/calendar.css" %>
+    <%= stylesheet_link_tag "style" %>
   </head>
   <body id="custom-doc" class="yui-skin-sam">
     <div class="hd">
@@ -40,8 +40,8 @@
       Follow us on <a href="#">Twitter</a>.  Send Suggestions to <a href="#">reminderthing@gmail.com</a>
     </div>
   </body>
-  <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-  <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/calendar/calendar-min.js"></script>
-  <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/datasource/datasource-min.js"></script> 
-  <script type="text/javascript" src="/javascripts/application.js"></script>
+  <%= javascript_include_tag "http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js" %>
+  <%= javascript_include_tag "http://yui.yahooapis.com/2.6.0/build/calendar/calendar-min.js" %>
+  <%= javascript_include_tag "http://yui.yahooapis.com/2.6.0/build/datasource/datasource-min.js" %>
+  <%= javascript_include_tag 'application' %>
 </html>

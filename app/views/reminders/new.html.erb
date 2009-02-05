@@ -2,29 +2,29 @@
 <div id="reminders" style="padding:15px;">
   <% @reminders.each do |day, reminders| %>
   <% unless logged_in? %>
-    <div style="padding:5px;background-color:#C2C8D1;color: #000;margin-bottom:5px;">
-      <%= link_to 'Sign up now', new_user_path, :style => 'font-weight:bold;color: #000;' %> or <%= link_to 'login', new_session_path, :style => 'color:#000;' %> to save these reminders 
-    </div>
+  <div style="padding:5px;background-color:#C2C8D1;color: #000;margin-bottom:5px;">
+    <%= link_to 'Sign up now', new_user_path, :style => 'font-weight:bold;color: #000;' %> or <%= link_to 'login', new_session_path, :style => 'color:#000;' %> to save these reminders 
+  </div>
   <% end %>
   <span class="day"><b><%=h day %></b></span>
   <table>
     <% reminders.each do |reminder| %>
-        <tr>
-          <td><%= link_to image_tag('cancel.png'), reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></td>
-          <td>
-            <span style="font-size:120%;"><%=h reminder.message %></span> 
-              <div class="delivery-date">
-                <em style="color: #777;"><%= format_delivery reminder.email %> 
-                  <% if reminder.sent? %>
-                    <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
-                  <% else %>
-                    at <%=h reminder.send_at_time_display %></em> 
-                <% end %>
-              </div>
-          </td>
-        </tr>
+    <tr>
+      <td><%= link_to image_tag('cancel.png'), reminder_path(reminder), :class => 'remove', :method => :delete, :style => 'color: red;' %></td>
+      <td>
+        <span style="font-size:120%;"><%=h reminder.message %></span> 
+        <div class="delivery-date">
+          <em style="color: #777;"><%= format_delivery reminder.email %> 
+            <% if reminder.sent? %>
+            <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
+            <% else %>
+            at <%=h reminder.send_at_time_display %></em> 
+          <% end %>
+        </div>
+      </td>
+    </tr>
     <% end %>
-      </table>
+  </table>
   <% end %>
 </div>
 <% end %>

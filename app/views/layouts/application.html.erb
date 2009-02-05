@@ -19,12 +19,6 @@
       simple reminders for phone or email
     </div>
     <div class="bd border">
-      <% (navigation = yield :navigation) %>
-      <% if navigation %>
-      <div style="margin-bottom: 5px; background-color: #eee; padding: 5px;">
-        <%= navigation %>
-      </div>
-      <% end %>
       <%= yield %>
     </div>
     <div class="messages">

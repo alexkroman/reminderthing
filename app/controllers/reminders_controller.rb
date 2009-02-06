@@ -11,7 +11,11 @@ class RemindersController < ApplicationController
   end
 
   def create
-    @reminder = Reminder.new(params[:reminder])
+    @reminder = if params[:reminder][:deliver_to].match('@')
+      EmailReminder.new(params[:reminder])
+    else
+      PhoneReminder.new(params[:reminder])
+    end
     if logged_in?
       @reminder.user = current_user
       current_user.phone_number = @reminder.phone_number

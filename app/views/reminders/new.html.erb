@@ -14,7 +14,7 @@
       <td>
         <span class="message"><%=h reminder.message %></span> 
         <div class="delivery-date">
-          <em class="email"><%= format_delivery reminder.email %> 
+          <em class="email"><%=h reminder.deliver_to_format %> 
             <% if reminder.sent? %>
             <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
             <% else %>
@@ -30,17 +30,17 @@
 <% end %>
 <div id="divider"></div>
 <div id="sms-form">
-  <% form_for(@reminder) do |f| %>
+  <% form_for @reminder do |f| %>
   <fieldset>
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your reminder' %>
     <p>
-      <%= f.label :phone_number, "Cell Number or Email" %>
-      <%= f.text_field :phone_number %>
+      <%= f.label :deliver_to, "Cell Number or Email" %>
+      <%= f.text_field :deliver_to %>
       <span id="addressBook">
         <% if @emails.size > 1 %>
         <select multiple="multiple" size="5" style="width: 160px;">
           <% @emails.each do |number| %>
-          <option onclick="setPhoneNumber('<%=h format_delivery(number.email) %>')"><%=h format_delivery(number.email) %></option>
+          <option onclick="setPhoneNumber('<%=h number.email %>')"><%=h number.email %></option>
           <% end %>
         </select>
         <% end %>

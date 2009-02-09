@@ -1,40 +1,3 @@
-<% unless @reminders.empty? %>
-<div id="reminders">
-  <% @reminders.each do |day, reminders| %>
-  <% unless logged_in? %>
-  <div id="please-login">
-    <%= link_to 'Sign up now', new_user_path, :class => 'bold' %> or <%= link_to 'login', new_session_path %> to save these reminders 
-  </div>
-  <% end %>
-  <span class="day"><b><%=h day %></b></span>
-  <table>
-    <% reminders.each do |reminder| %>
-    <tr>
-      <td>
-        <% if reminder.sent? %>
-          <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete %>
-        <% else %>
-          <%= link_to 'Cancel', reminder_path(reminder), :class => 'cancel', :method => :delete %>
-        <% end %>
-      </td>
-      <td>
-        <span class="message"><%=h reminder.message %></span> 
-        <div class="delivery-date">
-          <em class="email"><%= format_delivery reminder.email %> 
-            <% if reminder.sent? %>
-            <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
-            <% else %>
-            at <%=h reminder.send_at_time_display %></em> 
-          <% end %>
-        </div>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-  <% end %>
-</div>
-<% end %>
-<div id="divider"></div>
 <div id="sms-form">
   <% form_for(@reminder) do |f| %>
   <fieldset>
@@ -77,3 +40,35 @@
   </fieldset>
   <% end %>
 </div>
+<div id="divider"></div>
+<% unless @reminders.empty? %>
+<div id="reminders">
+  <% @reminders.each do |day, reminders| %>
+  <span class="day"><b><%=h day %></b></span>
+  <table>
+    <% reminders.each do |reminder| %>
+    <tr>
+      <td>
+        <% if reminder.sent? %>
+          <%= link_to 'Remove', reminder_path(reminder), :class => 'remove', :method => :delete %>
+        <% else %>
+          <%= link_to 'Cancel', reminder_path(reminder), :class => 'cancel', :method => :delete %>
+        <% end %>
+      </td>
+      <td>
+        <span class="message"><%=h reminder.message %></span> 
+        <div class="delivery-date">
+          <em class="email"><%= format_delivery reminder.email %> 
+            <% if reminder.sent? %>
+            <%= "sent #{time_ago_in_words reminder.send_at} ago" %>
+            <% else %>
+            at <%=h reminder.send_at_time_display %></em> 
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
+<% end %>

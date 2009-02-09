@@ -32,7 +32,7 @@
     <div id="timeDiv">
       <select multiple="multiple" size="8" style="width: 100px;">
         <% ((Time.now - Time.now.min.minutes)..(Time.now - Time.now.min.minutes)+ 23.hours).step(30.minutes) do |time| %>
-        <option onclick="setTime('<%=h time.strftime('%I:%M%p') %>')"><%=h time.strftime('%I:%M%p') %></option>
+        <option onclick="setTime('<%=h time.strftime('%I:%M%p').downcase %>')"><%=h time.strftime('%I:%M%p').downcase %></option>
         <% end %>
       </select>
     </div>

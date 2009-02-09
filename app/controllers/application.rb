@@ -38,10 +38,10 @@ class ApplicationController < ActionController::Base
     @reminders = {}
     if logged_in?
       @all_reminders = Reminder.find_owned(current_user)
-      @emails = Reminder.find(:all, :group => 'email', :conditions => ['user_id = ?', current_user.id], :group => 'email', :limit => 5)
+      @emails = Reminder.find(:all, :select => 'distinct(email), phone_number, count(*) as occurrences', :conditions => ['user_id = ?', current_user.id], :group => 'email', :order => 'occurrences DESC', :limit => 5)
     else
       @all_reminders = Reminder.find_guest(session[:csrf_id])
-      @emails = Reminder.find(:all, :group => 'email', :conditions => ['session_id = ?', session[:csrf_id]], :group => 'email', :limit => 5)
+      @emails = Reminder.find(:all, :select => 'distinct(email), phone_number, count(*) as occurrences', :conditions => ['session_id = ?', session[:csrf_id]], :group => 'email', :order => 'occurrences DESC', :limit => 5)
     end
 
     @reminders = @all_reminders.group_by(&:send_at_date_display)

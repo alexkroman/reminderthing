@@ -35,12 +35,12 @@
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your reminder' %>
     <p>
       <%= f.label :deliver_to, "Cell Number or Email" %>
-      <%= f.text_field :deliver_to, :autocomplete => 'off' %>
+      <%= f.text_field :deliver_to %>
       <span id="addressBook">
         <% if @emails.size > 1 %>
         <select multiple="multiple" size="5" style="width: 160px;">
           <% @emails.each do |number| %>
-          <option onclick="setPhoneNumber('<%=h number.deliver_to_format %>')"><%=h number.deliver_to_format %></option>
+          <option onclick="setPhoneNumber('<%=h number.email %>')"><%=h number.email %></option>
           <% end %>
         </select>
         <% end %>

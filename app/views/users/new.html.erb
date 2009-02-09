@@ -7,7 +7,7 @@
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your account' %>
     <p>
       <%= label_tag 'email' %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :maxlength => 55 %>
       <br />
       <em>test@test.com</em>
     </p>

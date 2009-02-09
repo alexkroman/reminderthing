@@ -30,7 +30,7 @@
     <%= f.submit "Schedule Reminder" %>
     <div id="cal1Container"></div>
     <div id="timeDiv">
-      <select onchange="setTime(this.options[this.selectedIndex].value);return false;" multiple="multiple" size="8" style="width: 100px;">
+      <select onclick="setTime(this.options[this.selectedIndex].value);return false;" multiple="multiple" size="8" style="width: 100px;">
         <% ((Time.now - Time.now.min.minutes)..(Time.now - Time.now.min.minutes)+ 23.hours).step(30.minutes) do |time| %>
         <option value="<%=h time.strftime('%I:%M%p').downcase %>"><%=h time.strftime('%I:%M%p').downcase %></option>
         <% end %>

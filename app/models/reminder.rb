@@ -1,9 +1,10 @@
 class Reminder < ActiveRecord::Base
-  attr_accessor :deliver_to, :send_at_date, :send_at_time, :time_zone
+  include SMSFu
+  attr_accessor :normalized_phone_number, :phone_number, :send_at_date, :send_at_time, :time_zone
 
   belongs_to :user
 
-  before_validation_on_create :set_send_at
+  before_validation_on_create :set_email_if_email, :normalize_phone_number, :set_email, :set_send_at
   validate :validate_email, :validate_send_at
   validates_presence_of :message, :message => 'needs to have something in it'
   validates_presence_of :send_at
@@ -49,8 +50,12 @@ class Reminder < ActiveRecord::Base
 
   private
 
+  def carrier
+    Block.find_carrier(normalized_phone_number)
+  end
+
   def validate_email
-    errors.add(:deliver_to, ' is not currently supported') unless self.email
+    errors.add(:phone_number, ' is not currently supported') unless self.email
   end
 
   def validate_send_at
@@ -58,10 +63,24 @@ class Reminder < ActiveRecord::Base
     errors.add(:send_at_time, ' is not valid') unless self.send_at
   end
 
+  def set_email_if_email
+    self.email = self.phone_number if self.phone_number.match('@')
+  end
+
+  def set_email
+    self.email = get_sms_address(self.normalized_phone_number, carrier) unless self.email
+  rescue
+    nil
+  end
+
   def set_send_at
     self.send_at = Time.parse(send_at_text)
   rescue
     nil
+  end
+
+  def normalize_phone_number
+    self.normalized_phone_number = self.phone_number.gsub(/\D/,'')
   end
   
 end

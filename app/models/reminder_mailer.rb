@@ -9,7 +9,7 @@ class ReminderMailer < ActionMailer::Base
 
   def sms(message)
     setup(message)
-    @from = 'sms@reminderthing.com.com'
+    @from = 'sms@reminderthing.com'
     @subject = ''
     @content = message.message
   end

@@ -10,12 +10,12 @@ class ReminderMailer < ActionMailer::Base
     setup(message)
     @from = 'sms@reminderthing.com.com'
     @subject = ''
-    @body = message.message
   end
 
   def setup(message)
     @content_type = "text/plain"
     @recipients = message.email
+    @body = message.message
   end
 
 end

@@ -7,7 +7,7 @@
       <%= f.text_field :phone_number, :maxlength => 55 %>
       <span id="addressBook">
         <% if @emails.size > 1 %>
-        <select multiple="multiple" size="5" style="width: 160px;">
+        <select multiple="multiple" size="5" style="width: 200px;">
           <% @emails.each do |number| %>
           <option onclick="setPhoneNumber('<%=h format_delivery(number.email) %>')"><%=h format_delivery(number.email) %></option>
           <% end %>

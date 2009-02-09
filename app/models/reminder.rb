@@ -8,6 +8,11 @@ class Reminder < ActiveRecord::Base
   validate :validate_email, :validate_send_at
   validates_presence_of :message, :message => 'needs to have something in it'
   validates_presence_of :send_at
+  validates_length_of :message, :maximum => 140, :message => 'must be less than 140 characters'
+
+  def sms?
+    SMSFu.carriers.any? { |c| c[1] == '@' + email.split('@')[1] }
+  end
 
   def send_at_text
    "#{self.send_at_date} #{self.send_at_time}"

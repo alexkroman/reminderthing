@@ -42,7 +42,11 @@ class RemindersController < ApplicationController
 
   def send_messages
     Reminder.find_not_sent.each do |reminder|
-      ReminderMailer.deliver_message(reminder) && reminder.sent!
+      if reminder.sms?
+        ReminderMailer.deliver_sms(reminder)
+      else
+        ReminderMailer.deliver_email(reminder) 
+      end && reminder.sent!
     end
     render :nothing => true
   end

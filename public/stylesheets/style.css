@@ -123,8 +123,23 @@ a {
   font-size: 120%;
   color: #000E2E;
 }
-a.remove {
+a.cancel {
+  background-color: red;
+  padding: 2px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 80%;
   margin-right: 5px;
+  text-decoration: none;
+}
+a.remove {
+  background-color: #777;
+  color: #fff;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 80%;
+  margin-right: 5px;
+  text-decoration: none;
 }
 #cal1Container {
   position:absolute;

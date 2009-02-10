@@ -1,5 +1,8 @@
 class RemindersController < ApplicationController
 
+  def guest
+  end
+
   def new
     @reminder = Reminder.new
     @reminder.phone_number = logged_in? ? current_user.phone_number : session[:phone_number]
@@ -23,7 +26,13 @@ class RemindersController < ApplicationController
 
     respond_to do |format|
       if @reminder.save
-        format.html { redirect_to(root_path) }
+        format.html do
+          if logged_in?
+            redirect_to(root_path) 
+          else
+            redirect_to guest_reminders_path
+          end
+        end
       else
         format.html { render :action => "new" }
       end
@@ -31,11 +40,7 @@ class RemindersController < ApplicationController
   end
 
   def destroy
-    if logged_in?
-      @reminder = Reminder.find_by_id_and_user_id(params[:id], current_user.id)
-    else
-      @reminder = Reminder.find_by_id_and_session_id(params[:id], session[:csrf_id])
-    end
+    @reminder = Reminder.find_by_id_and_user_id(params[:id], current_user.id)
     @reminder.destroy
     redirect_to(root_path)
   end

@@ -40,8 +40,8 @@
   </fieldset>
   <% end %>
 </div>
+<% if @reminders.size > 0 && logged_in? %>
 <div id="divider"></div>
-<% unless @reminders.empty? %>
 <div id="reminders">
   <% @reminders.each do |day, reminders| %>
   <span class="day"><b><%=h day %></b></span>

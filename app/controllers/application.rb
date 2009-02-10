@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   helper :all # include all helpers, all the time
-  before_filter :set_timezone, :find_reminders, :except => :send_messages
+  before_filter :set_timezone, :find_reminders, :find_emails, :except => :send_messages
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -35,16 +35,11 @@ class ApplicationController < ActionController::Base
   end
 
   def find_reminders
-    @reminders = {}
-    if logged_in?
-      @all_reminders = Reminder.find_owned(current_user)
-      @emails = Reminder.find(:all, :select => 'distinct(email), count(*) as occurrences', :conditions => ['user_id = ?', current_user.id], :group => 'email', :order => 'occurrences DESC', :limit => 5)
-    else
-      @all_reminders = Reminder.find_guest(session[:csrf_id])
-      @emails = Reminder.find(:all, :select => 'distinct(email), count(*) as occurrences', :conditions => ['session_id = ?', session[:csrf_id]], :group => 'email', :order => 'occurrences DESC', :limit => 5)
-    end
+    @reminders = Reminder.find_owned(current_user).group_by(&:send_at_date_display) if logged_in?
+  end
 
-    @reminders = @all_reminders.group_by(&:send_at_date_display)
+  def find_emails
+    @emails = Reminder.find(:all, :select => 'distinct(email), count(*) as occurrences', :conditions => ['user_id = ?', current_user.id], :group => 'email', :order => 'occurrences DESC', :limit => 5) if logged_in?
   end
 
 end

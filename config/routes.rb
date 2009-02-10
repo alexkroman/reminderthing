@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.resources :reminders, :collection => { :send_messages => :get }
+  map.resources :reminders, :collection => { :guest => :get, :send_messages => :get }
 
   # The priority is based upon order of creation: first created -> highest priority.
 

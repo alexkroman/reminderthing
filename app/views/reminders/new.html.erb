@@ -6,7 +6,7 @@
       <%= f.label :phone_number, "Cell Number or Email" %>
       <%= f.text_field :phone_number, :size => 35, :maxlength => 55 %>
       <span id="addressBook">
-        <% if @emails.size > 1 %>
+        <% if @emails && @emails.size > 1 %>
         <select onclick="setPhoneNumber(this.options[this.selectedIndex].value);return false;" multiple="multiple" size="5" style="width: 200px;">
           <% @emails.each do |number| %>
           <option value="<%=h format_delivery(number.email) %>"><%=h format_delivery(number.email) %></option>
@@ -40,7 +40,7 @@
   </fieldset>
   <% end %>
 </div>
-<% if @reminders.size > 0 && logged_in? %>
+<% if @reminders && @reminders.size > 0 && logged_in? %>
 <div id="divider"></div>
 <div id="reminders">
   <% @reminders.each do |day, reminders| %>

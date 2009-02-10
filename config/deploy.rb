@@ -1,5 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + "/deploy_local")
-require 'mongrel_cluster/recipes'
 
 set :application, "reminderthing.com"
 set :repository,  "ssh://alex/var/git/reminder.git"
@@ -27,32 +26,24 @@ role :db,  "alex", :primary => true
 after "deploy:update_code", "db:symlink"
 after "deploy:setup", "permissions", "db"
 
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+
+end
+
 task :permissions do
   sudo "chown -R alex:mongrel #{deploy_to}"
   sudo "touch #{shared_path}/log/production.log"
   sudo "chown -R alex:mongrel #{shared_path}/log"
   sudo "chmod -R 2770 #{shared_path}/log"
-end
-
-namespace :mongrel do
-  namespace :cluster do
-
-  task :start, :roles => :web do
-    sudo "/etc/init.d/mongrel_cluster start"
-  end
-
-  desc "Stop the web server"
-  task :stop, :roles => :web do
-    sudo "/etc/init.d/mongrel_cluster stop"
-  end
-
-  desc "Restart the web server"
-  task :restart, :roles => :web do
-    mongrel.cluster.stop
-    mongrel.cluster.start
-  end
-
-  end
 end
 
 namespace :db do

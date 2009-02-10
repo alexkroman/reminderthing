@@ -1,4 +1,4 @@
-#custom-doc { width:28.69em;*width:28.02em;min-width:360px; margin:auto; text-align:left; }
+#custom-doc { width:24.62em;*width:24.02em;min-width:320px; margin:auto; text-align:left; }
 #addressBook {
   margin-top: 3px;
   display: none;
@@ -80,7 +80,6 @@ a {
   margin-bottom: 10px;
 }
 .hd {
-  margin-top: 20px;
   text-align: center;
   padding: 5px; 
   background-color: #000E2E;
@@ -99,6 +98,7 @@ a {
 }
 #sms-form em {
   color: #777;
+  font-size: 86%;
 }
 #sms-form label {
   display: block;
@@ -197,7 +197,7 @@ a {
 
 input[type="text"],
 input[type="password"] {
-  width: 300px;
+  width: 275px;
 }
 
 .message {

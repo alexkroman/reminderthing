@@ -21,13 +21,13 @@
       <%= f.label :message, "Your Reminder" %>
       <%= f.text_field :message, :maxlength => 55 %>
       <br />
-      <em>Go to lunch meeting or pick up a bottle of wine</em>
+      <em>pick up a bottle of wine or schedule appointment</em>
     </p>
     <%= f.label :send_at_date, "When?" %>
-    <%= f.text_field :send_at_date, :style => 'width: 88px;' %>
-    <%= f.text_field :send_at_time, :style => 'width: 75px;' %> 
+    <%= f.text_field :send_at_date, :style => 'width: 92px;' %>
+    <%= f.text_field :send_at_time, :style => 'width: 65px;' %> 
     <%= f.text_field :time_zone, :style => 'display:none' %> 
-    <%= f.submit "Schedule Reminder" %>
+    <%= f.submit "Schedule" %>
     <div id="cal1Container"></div>
     <div id="timeDiv">
       <select onclick="setTime(this.options[this.selectedIndex].value);return false;" multiple="multiple" size="8" style="width: 100px;">

@@ -1,3 +1,4 @@
+TAGS
 config/database.yml
 config/deploy_local.rb
 log/*.log

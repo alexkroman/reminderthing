@@ -13,27 +13,35 @@
     <%= stylesheet_link_tag "style" %>
   </head>
   <body id="custom-doc" class="yui-skin-sam">
-    <div class="hd">
-      <a href="/"><img src="/images/logo.gif"></a>
+
+    <div class="roundedcornr_box_700903">
+      <div class="roundedcornr_top_700903"><div></div></div>
+      <div class="roundedcornr_content_700903">
+        <div class="hd">
+          <a href="/"><img src="/images/logo.gif"></a>
+        </div>
+        <div class="bd border">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="roundedcornr_bottom_700903"><div></div></div>
     </div>
-    <div class="bd border">
-      <%= yield %>
-    </div>
-    <div class="fd">
-      &copy; 2009; <%= mail_to 'reminderthing@gmail.com', 'reminderthing@gmail.com' %>
-      <% if logged_in? %>
-      | <%= link_to 'Logout', logout_path %>
-      <% end %>
-    </div>
-    <script type="text/javascript">
+        <div class="fd">
+          &copy; 2009; <%= mail_to 'reminderthing@gmail.com', 'reminderthing@gmail.com' %>
+          <% if logged_in? %>
+            | <%= link_to 'Logout', logout_path %>
+          <% end %>
+        </div>
+  </div>
+  <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-173596-8");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
+      try {
+        var pageTracker = _gat._getTracker("UA-173596-8");
+        pageTracker._trackPageview();
+      } catch(err) {}</script>
   </body>
   <%= javascript_include_tag "http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js" %>
   <%= javascript_include_tag "http://yui.yahooapis.com/2.6.0/build/calendar/calendar-min.js" %>

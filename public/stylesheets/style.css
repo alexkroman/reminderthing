@@ -82,8 +82,6 @@ a {
   margin-bottom: 10px;
 }
 .hd {
-  margin-top:10px;
-  padding-top:8px;
   text-align: center;
   background-color: #fff;
   color: #fff;
@@ -181,7 +179,6 @@ a {
 #reminders {
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 15px;
   background-color: #fff;
 }
 #guest {
@@ -229,4 +226,27 @@ em.email {
 
 #please-login a {
   color: #000;
+}
+.roundedcornr_box_700903 {
+  margin-top:20px;
+  background: #ffffff;
+}
+.roundedcornr_top_700903 div {
+  background: url(/images/roundedcornr_700903_tl.png) no-repeat top left;
+}
+.roundedcornr_top_700903 {
+  background: url(/images/roundedcornr_700903_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_700903 div {
+  background: url(/images/roundedcornr_700903_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_700903 {
+   background: url(/images/roundedcornr_700903_br.png) no-repeat bottom right;
+}
+
+.roundedcornr_top_700903 div, .roundedcornr_top_700903, 
+.roundedcornr_bottom_700903 div, .roundedcornr_bottom_700903 {
+  width: 100%;
+  height: 30px;
+  font-size: 1px;
 }

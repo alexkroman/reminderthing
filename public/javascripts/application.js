@@ -2,7 +2,6 @@ YAHOO.util.Event.onDOMReady(init);
 YAHOO.namespace("example.calendar");
 
 function init() {
-
   if (YAHOO.util.Dom.get('reminder_phone_number').value == '') {
     YAHOO.util.Dom.get('reminder_message').focus();
   } else if (YAHOO.util.Dom.get('reminder_message').value == '') {

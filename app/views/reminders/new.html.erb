@@ -72,3 +72,10 @@
   <% end %>
 </div>
 <% end %>
+<% unless logged_in? %>
+  <div class="messages">
+      <%= link_to '<b>Sign up now</b>', signup_path, :class => 'signup' %>
+      or 
+      <%= link_to 'Login', login_path, :class => 'login' %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   helper :all # include all helpers, all the time
-  before_filter :set_timezone, :find_reminders, :find_emails, :except => :send_messages
+  before_filter :find_timezone, :find_reminders, :find_emails, :except => :send_messages
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -20,18 +20,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_timezone
-    if params[:reminder] and params[:reminder][:time_zone]
-      time_zone = session[:time_zone] = params[:reminder][:time_zone].to_i
-      if logged_in?
-        current_user.time_zone = time_zone
-        current_user.save!
-      end
-    else
-      time_zone = session[:time_zone]
-      time_zone = current_user.time_zone if logged_in?
-    end
-    Time.zone = 0 - time_zone if time_zone
+  def find_timezone
+    @time_zone = current_user.time_zone if logged_in?
+    Time.zone = 0 - @time_zone if @time_zone
   end
 
   def find_reminders

@@ -26,11 +26,8 @@ class Reminder < ActiveRecord::Base
     send_at.to_date
   end
 
-  def today
-    Date.today
-  end
-  
   def send_at_date_display
+    today = Date.today
     if send_at_to_date == today
       output = 'Today'
     elsif send_at_to_date == today + 1

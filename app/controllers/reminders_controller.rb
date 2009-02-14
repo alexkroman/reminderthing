@@ -1,4 +1,5 @@
 class RemindersController < ApplicationController
+  before_filter :set_timezone, :only => 'create'
 
   def guest
   end
@@ -54,6 +55,13 @@ class RemindersController < ApplicationController
       end && reminder.sent!
     end
     render :nothing => true
+  end
+
+  private
+
+  def set_timezone
+    @time_zone = session[:time_zone] = params[:reminder][:time_zone].to_i
+    current_user.time_zone = @time_zone and current_user.save! and find_timezone if logged_in?
   end
 
 end

@@ -103,7 +103,7 @@ a {
 }
 #sms-form label {
   display: block;
-  color: #3367A9;
+  color: #031831
 }
 #cal1Container {
   display: none;
@@ -122,7 +122,7 @@ a {
 }
 .day {
   font-size: 120%;
-  color: #000E2E;
+  color: #031831
 }
 a.cancel {
   background-color: red;
@@ -152,6 +152,7 @@ a.remove {
   color: #777;
   font-size:84%;
   margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -194,10 +195,6 @@ a {
   padding-top: 5px;
   font-size: 90%;
   border: 0;
-}
-
-#reminders table {
-  margin-top: 10px;
 }
 
 input[type="text"],
@@ -250,3 +247,4 @@ em.email {
   height: 30px;
   font-size: 1px;
 }
+

@@ -21,11 +21,19 @@ class Reminder < ActiveRecord::Base
   def send_at_time_display
     send_at.strftime('%I:%M%p')
   end
+
+  def send_at_to_date
+    send_at.to_date
+  end
+
+  def today
+    Date.today
+  end
   
   def send_at_date_display
-    if send_at.to_date == Date.today
+    if send_at_to_date == today
       output = 'Today'
-    elsif send_at.to_date == Date.today + 1
+    elsif send_at_to_date == today + 1
       output = 'Tomorrow'
     else
       send_at.strftime('%a, %b %d') 

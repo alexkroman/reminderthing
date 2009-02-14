@@ -3,7 +3,7 @@ YAHOO.namespace("example.calendar");
 
 function init() {
   if (YAHOO.util.Dom.get('reminder_phone_number').value == '') {
-    YAHOO.util.Dom.get('reminder_message').focus();
+    YAHOO.util.Dom.get('reminder_phone_number').focus();
   } else if (YAHOO.util.Dom.get('reminder_message').value == '') {
     YAHOO.util.Dom.get('reminder_message').focus();
   }
@@ -18,13 +18,14 @@ function init() {
   YAHOO.util.Event.addListener("timeDiv", "mouseout", function() { focusedElement = null });
   YAHOO.util.Event.addListener("reminder_send_at_time", "blur", function() { if (focusedElement != 'timeDiv') { YAHOO.util.Dom.setStyle('timeDiv', 'display', 'none');}});
   YAHOO.util.Event.addListener("reminder_send_at_time", "focus", showTime);
-  YAHOO.util.Event.addListener("reminder_send_at_date", "focus", showCalendar) 
-  YAHOO.util.Event.addListener("reminder_phone_number", "focus", showAddressBook) 
+  YAHOO.util.Event.addListener("reminder_send_at_date", "focus", showCalendar);
+  YAHOO.util.Event.addListener("reminder_phone_number", "focus", showAddressBook);
+  YAHOO.util.Event.addListener("reminder_send_at_date", "change", updateCalendar);
   YAHOO.util.Event.addListener("reminder_phone_number", "blur", function() { if (focusedElement != 'addressBook') { YAHOO.util.Dom.setStyle('addressBook', 'display', 'none');}});
 
   Now = new Date();
-  nice_date = YAHOO.util.Date.format(Now, {format: '%b %d, %Y'})
-  nice_time = YAHOO.util.Date.format(Now, {format: '%I:%M%P'})
+  nice_date = YAHOO.util.Date.format(Now, {format: '%b %d, %Y'});
+  nice_time = YAHOO.util.Date.format(Now, {format: '%I:%M%P'});
 
   if (YAHOO.util.Dom.get('reminder_send_at_date').value == '') {
     YAHOO.util.Dom.get('reminder_send_at_date').value = nice_date;
@@ -83,6 +84,55 @@ function mySelectHandler(type,args,obj) {
   hideCalendar();
   showTime();
 }; 
+
+function reversedMonths() {
+  var shortMonthsArray = YAHOO.example.calendar.cal1.cfg.getProperty("MONTHS_SHORT");
+  var longMonthsArray = YAHOO.example.calendar.cal1.cfg.getProperty("MONTHS_LONG");
+
+  //YAHOO.log("Called getReversedMonths");
+  var reversedObj = new Object;
+  for (var i = 0, j = shortMonthsArray.length; i < j; i++) {
+    reversedObj[shortMonthsArray[i].toLowerCase()] = i + 1; // Months start at 1 = January
+  }
+  for (var i = 0, j = longMonthsArray.length; i < j; i++) {
+    reversedObj[longMonthsArray[i].toLowerCase()] = i + 1; // Months start at 1 = January
+  }
+  return reversedObj;
+}
+
+function getEnteredDate() {
+  var calendars = YAHOO.example.calendar;
+
+  str = YAHOO.util.Dom.get('reminder_send_at_date').value;
+  str = str.toLowerCase();
+  var regex = new RegExp("([a-z]+) ([0-9]+),? ([0-9]{4})");
+  var match = regex.exec(str);
+  if (match == null || match.length < 3) {
+    return '';
+  } else {
+    var calDate = new Array();
+    reversed = reversedMonths();
+    calDate['month'] = reversed[match[1]];
+    calDate['day'] = match[2];
+    calDate['year'] = match[3];
+    return calDate;
+  }
+}
+
+function updateCalendar() {
+  var calObj = YAHOO.example.calendar.cal1;
+  var calDate = getEnteredDate();
+  if (calDate) {
+    calObj.cfg.setProperty("pagedate", calDate.month + '/' + calDate.year);
+    // Only select the date on the first page!
+    calObj.pages[0].select(calDate.month + '/' + calDate.day + '/' + calDate.year);
+    calObj.render();
+  } else {
+    // Unrecognized date, clear the calendar.
+    inputBox.value = '';
+    calObj.render();
+  }
+}
 
 YAHOO.example.calendar.init = function() {
   YAHOO.example.calendar.cal1 = new YAHOO.widget.CalendarGroup("cal1","cal1Container", 

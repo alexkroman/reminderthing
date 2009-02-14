@@ -23,6 +23,7 @@ class ReminderTest < ActionController::IntegrationTest
     fill_in "reminder_send_at_date", :with => 'May 1, 2009'
     fill_in "reminder_send_at_time", :with => '1:23am'  
     click_button "Schedule"
+
   end
 
 end

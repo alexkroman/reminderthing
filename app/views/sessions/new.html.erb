@@ -7,10 +7,10 @@
     <div class="errorExplanation"><%= flash[:error] %></div>
   <% end %>
 <p><%= label_tag 'email' %>
-  <%= text_field_tag 'email', @login, :maxlength => 55 %></p>
+  <%= text_field_tag 'email', @login, :size => 35, :maxlength => 55 %></p>
 
 <p><%= label_tag 'password' %>
-  <%= password_field_tag 'password', nil %></p>
+  <%= password_field_tag 'password', nil, :size => 35 %></p>
 
 <p><%= submit_tag 'Login' %></p>
 </fieldset>

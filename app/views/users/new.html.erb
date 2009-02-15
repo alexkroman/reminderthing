@@ -7,20 +7,20 @@
     <%= f.error_messages :header_message => '',  :message => 'We had problems creating your account' %>
     <p>
       <%= label_tag 'email' %>
-      <%= f.text_field :email, :maxlength => 55 %>
+      <%= f.text_field :email, :size => 35, :maxlength => 55 %>
       <br />
       <em>test@test.com</em>
     </p>
 
     <p>
       <%= label_tag 'password' %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :size => 35 %>
       <br />
       <em>minimum of 6 characters</em>
     </p>
 
     <p><%= label_tag 'password_confirmation', 'Confirm Password' %>
-      <%= f.password_field :password_confirmation %></p>
+      <%= f.password_field :password_confirmation, :size => 35 %></p>
 
     <p><%= submit_tag 'Sign up' %></p>
   </fieldset>

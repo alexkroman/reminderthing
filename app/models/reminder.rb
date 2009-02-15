@@ -44,12 +44,6 @@ class Reminder < ActiveRecord::Base
     find_all_by_sent(false, :conditions => ['send_at < ?', Time.now.utc])
   end
 
-  def self.find_guest(session_id)
-    Reminder.find(:all,
-                  :conditions => ['send_at >= ? AND session_id = ?', Time.now.midnight.utc, session_id],
-                  :order => 'send_at ASC')
-  end
-
   def self.find_owned(user)
     Reminder.find(:all,
                   :conditions => ['send_at >= ? AND user_id = ?', Time.now.midnight.utc, user.id],

@@ -11,4 +11,13 @@ class LoginTest < ActionController::IntegrationTest
     fill_in "password", :with => 'monkey'
     click_button "Login"
   end
+
+  test "fail to login" do
+    visit root_path
+    click_link "Login"
+    fill_in "email", :with => 'quentin@example.com'
+    fill_in "password", :with => 'xxx'
+    click_button "Login"
+  end
+
 end

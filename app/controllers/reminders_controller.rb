@@ -16,14 +16,8 @@ class RemindersController < ApplicationController
 
   def create
     @reminder = Reminder.new(params[:reminder])
-    if logged_in?
-      @reminder.user = current_user
-      current_user.phone_number = @reminder.phone_number
-      current_user.save!
-    else
-      @reminder.session_id = session[:csrf_id]
-      session[:phone_number] = @reminder.phone_number
-    end
+    @reminder.session_id = session[:csrf_id]
+    logged_in? ? set_user_phone_number : set_guest_phone_number
 
     respond_to do |format|
       if @reminder.save
@@ -41,7 +35,7 @@ class RemindersController < ApplicationController
   end
 
   def destroy
-    @reminder = Reminder.find_by_id_and_user_id(params[:id], current_user.id)
+    @reminder = current_user.reminders.find(params[:id])
     @reminder.destroy
     redirect_to(root_path)
   end
@@ -58,6 +52,16 @@ class RemindersController < ApplicationController
   end
 
   private
+
+  def set_user_phone_number
+    @reminder.user = current_user
+    current_user.phone_number = @reminder.phone_number
+    current_user.save!
+  end
+
+  def set_guest_phone_number
+    session[:phone_number] = @reminder.phone_number
+  end
 
   def set_timezone
     @time_zone = session[:time_zone] = params[:reminder][:time_zone].to_i

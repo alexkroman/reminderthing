@@ -57,7 +57,7 @@ class Reminder < ActiveRecord::Base
   end
 
   def validate_email
-    errors.add(:phone_number, ' is not currently supported') unless self.email
+    errors.add(:phone_number, ' is not currently supported and we are working on adding more phone numbers.  We are currently supporting cricket, alltell, ameritech, at&t, bell south, blue sky frog, boost, cellular south, kajeet, metro pcs, powertel, pscwireless, qwest, southern link, sprint, suncom, t-mobile, telus, virgin, and verizon.') unless self.email
   end
 
   def validate_send_at
